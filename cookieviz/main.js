@@ -42,15 +42,14 @@ $("#show_menu").click(function ($is_open) {
         $("#show_menu").text("Fermer Menu");
         $("#menu").animate({top: '0px'}, 500);
         $("#show_menu").animate({top: '40px'}, 500);
-        $("#show_menu").css({background: '#ffffff', color: "#000000"}, 300);
+        $("#show_menu").css({background: '#fff', color: "#000"}, 300);
         is_open = true;
     }
     else {
-
         $("#show_menu").text("Ouvrir Menu");
         is_open = false;
         $("#show_menu").animate({top: '0px'}, 500);
-        $("#show_menu").css({background: '#000000', color: "#ffffff"}, 300);
+        $("#show_menu").css({background: '#000', color: "#fff"}, 300);
         $("#menu").animate({top: '-50px'}, 500);
     }
 
