@@ -37,7 +37,7 @@ function generate(layout, text, severity) {
 
 function get_json(max_date, domain)
 {
-    var a=1
+    var a=1;
 	$.ajax({
 		async: false,
 		dataType: "json",
@@ -55,7 +55,7 @@ function get_json(max_date, domain)
 }
 function get_info(domain)
 {
-    var a=1
+    var a=1;
 	$.ajax({
 		async: false,
 		dataType: "html",
@@ -74,7 +74,7 @@ function get_info(domain)
 
 function reset_graph()
 {
-    var a=1
+    var a=1;
     $.ajax({
 	    async: false,
 	    type: "GET",
@@ -133,7 +133,7 @@ function load_nodes_bis(data_nodes, data_links, map_nodes_bis, map_links, graph,
 		{
 //		    generate("topLeft", "addLink between :"+d.source+" To :"+d.target, "error");
 		    graph.addLink(data_links[key], map_nodes_bis);
-		    map_links[d.source+d.target] = true
+		    map_links[d.source+d.target] = true;
 		    change = true;
 		}
 	}
@@ -188,7 +188,7 @@ function draw_points(el, w, h)
 	this.addNode = function (d, cpt) {
         nodes.push({"cx":d.x,"cy":d.y,"r":d.size,"date":d.date,"name":d.name, "id":cpt, "show":"visible", "link": d.link});
 		to_hide[d.name] = "visible";
-	}
+	};
     this.init_force = function ()
     {
 	force = d3.layout.force()
@@ -198,14 +198,14 @@ function draw_points(el, w, h)
 	.distance(100)
 	.friction(0.9)
 	.size([w,h]);
-    }
+    };
     this.growNode = function (d, cpt) {
 	to_grow[d.name]=d.size;
-	}
+	};
 	this.clearit = function (){
 	nodes = [];
 	links = [];
-    }
+    };
 	this.redraw = function (val) 
 	{
 			if (val == 1)
@@ -246,7 +246,7 @@ function draw_points(el, w, h)
 		
 	
     vis.attr("transform", "translate(" + trans+ ")"  + " scale(" + scale + ")");
-	}
+	};
 
     this.addLink = function (d, map_nodes_bis) {
 	if (d.source && d.target)
@@ -258,12 +258,12 @@ function draw_points(el, w, h)
 	redraw.remove();
         links.push({"source":map_nodes_bis[d.source],"target":map_nodes_bis[d.target],"cookie":d.cookie,"id":cpt_link});
 	cpt_link++;
-    }
+    };
     this.refresh = function ()
 	{
 	    force.start();
 	    update();
-	}
+	};
 	var trans=[],
 	scale=1;
 
@@ -320,7 +320,7 @@ function draw_points(el, w, h)
 	.attr("stroke-opacity", 0.8)
 	.attr("marker-end","url(#arrow)")
 	.style("stroke-width", 2)
-	.style("stroke", function(d) {return fill[d.cookie]})
+	.style("stroke", function(d) {return fill[d.cookie]});
 	link.exit().remove();
 
 	var grow = node.filter(function(d, $to_grow) {if (typeof to_grow[d.name] != 'undefined'){return d.id; }});
@@ -365,7 +365,7 @@ function draw_points(el, w, h)
 
 	to_grow = [];
 	to_redraw = [];
-    }
+    };
 
     // Make it all go
     update();
