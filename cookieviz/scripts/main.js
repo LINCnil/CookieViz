@@ -118,7 +118,7 @@
         // start listening
         $(canvas).mousedown(handler.clicked);
 
-      },
+      }
       
     }
     return that

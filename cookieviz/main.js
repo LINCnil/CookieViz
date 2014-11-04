@@ -115,7 +115,7 @@ $("#info").click(function ($domain, $max_date)
 					showhide : false,
 					height : document.body.clientHeight*(20/100),
 					sortable: true,
-					zebra:true,
+					zebra:true
 				});
 				$("#info_window").animate({"top":"70%"});
 				$("#close_window").css({"visibility":"visible"});
