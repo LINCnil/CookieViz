@@ -76,4 +76,3 @@ class point
 		$this->date_time = $line["date"];
 	}
 }
-?>

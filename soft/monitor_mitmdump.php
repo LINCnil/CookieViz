@@ -233,4 +233,4 @@ while (continue_run($fichier) == TRUE)
     pclose($handle);
     mysql_close($link) or die('Impossible de se déconnecter : ' . mysql_error());
     exit();
-?>
+

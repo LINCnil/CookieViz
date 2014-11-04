@@ -24,4 +24,3 @@ fclose($fp);
 $link = mysql_connect('localhost', 'root', $mdp)
     or die('Impossible de se connecter : ' . mysql_error());
 mysql_select_db('CookieViz') or die('Impossible de sélectionner la base de données');
-?>

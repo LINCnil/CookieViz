@@ -60,4 +60,3 @@ while ($line = mysql_fetch_assoc($result))
 echo "</tbody>";
 echo "</table>";
 require "disconnect.php";
-?>

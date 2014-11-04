@@ -16,10 +16,8 @@ You should have received a copy of the GNU General Public License
 along with CookieViz.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 require "connect.php";
 
 $query = "TRUNCATE url_referer";
 $result = mysql_query($query) or die ("Echec de la requête : ".query." ". mysql_error());
 require "disconnect.php";
-?>
