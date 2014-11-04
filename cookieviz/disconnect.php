@@ -16,5 +16,4 @@ You should have received a copy of the GNU General Public License
 along with CookieViz.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-mysql_close($link)  or die('Impossible de se déconnecter : ' . mysql_error());
+$link->close();

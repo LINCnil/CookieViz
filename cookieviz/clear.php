@@ -18,6 +18,5 @@ along with CookieViz.  If not, see <http://www.gnu.org/licenses/>.
 
 require "connect.php";
 
-$query = "TRUNCATE url_referer";
-$result = mysql_query($query) or die ("Echec de la requête : ".query." ". mysql_error());
+$link->query("TRUNCATE url_referer");
 require "disconnect.php";
