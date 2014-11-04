@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*Copyright (c) 2013, Stéphane Petitcolas
 This file is part of CookieViz
 
@@ -20,8 +20,14 @@ require "connect.php";
 
 if(isset($_GET["domain"]))
 {
-	$domain = $_GET["domain"];
+	$domain = mysql_real_escape_string($_GET["domain"]);
+	
 }
+else
+{
+	exit;
+}
+
 echo '<table id="infos">';
  echo "<thead>";
  echo "<tr>";
