@@ -13,7 +13,7 @@
 	top : 95%;
 	left : 0;
 	width: 100%;
-	height:0%;
+	height:0;
 	z-index: 4;
 	text-align: center;
 }
@@ -70,8 +70,8 @@
 #menu {
 	position : absolute;
 	background : #231F20;
-	top: 0px;
-	left: 0px;
+	top: 0;
+	left: 0;
 	width: 15%;
 	height: 100%;
 	z-index: 3;
@@ -85,7 +85,7 @@
 	border-style : solid;
 	border-color : #000000;
 	border-width : 1px;
-	top: 0px;
+	top: 0;
 	left: 45%;
 	width: 10%;
 	height: 20px;
@@ -202,7 +202,7 @@ img {
 	}
 .title {
 	width:95%;
-	margin:3 auto;
+	margin:3px auto;
 	margin-bottom:3px;
 	background : url('img/logo.png') no-repeat center center fixed;
 	text-align : center;
