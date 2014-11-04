@@ -40,7 +40,7 @@ if (params["domain"])
 is_open=false;
 $("#show_menu").click(function ($is_open)
 		      {
-			  if (is_open == false)
+			  if (is_open === false)
 			      {
 				  $("#show_menu").text("Fermer Menu");
 				  $("#menu").animate( {top:'0px'} ,500);	

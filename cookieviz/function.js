@@ -137,7 +137,7 @@ function load_nodes_bis(data_nodes, data_links, map_nodes_bis, map_links, graph,
 		    change = true;
 		}
 	}
-    if (change == true)
+    if (change === true)
 	{
 	    graph.refresh();
 	}
