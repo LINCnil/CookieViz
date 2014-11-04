@@ -254,6 +254,6 @@ $write_nodes.=']';
 $write_links.=']';
 
 require "disconnect.php";
-print '{"inf_nodes":'.$write_nodes.',"inf_links":'.$write_links.',"max_date":"'.$max_date.'","cpt":'.$cpt.'}';
+print '{"inf_nodes":'.$write_nodes.',"inf_links":'.$write_links.',"max_date":"'.htmlspecialchars($max_date).'","cpt":'.$cpt.'}';
 //print '{"inf_nodes":'.$write_nodes.',"inf_links":'.$write_links.'}';
 ?>
