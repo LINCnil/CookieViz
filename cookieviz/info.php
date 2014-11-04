@@ -1,5 +1,5 @@
-ï»¿<?php
-/*Copyright (c) 2013, StÃ©phane Petitcolas
+<?php
+/*Copyright (c) 2013, Stéphane Petitcolas
 This file is part of CookieViz
 
 CookieViz is free software: you can redistribute it and/or modify
@@ -20,7 +20,7 @@ require "connect.php";
 
 if(isset($_GET["domain"]))
 {
-	$domain = mysql_real_escape_string($_GET["domain"]);
+	$domain = mysqli_real_escape_string($_GET["domain"]);
 	
 }
 else
@@ -38,7 +38,7 @@ echo '<table id="infos">';
  echo "</thead>";
  echo "<tbody>";
 $query="SELECT * FROM url_referer WHERE referer_domains='".$domain."'GROUP BY url_domains, referer_domains";
-$result = mysql_query($query) or die ("Echec de la requÃªte : ".$query." ". mysql_error());
+$result = mysql_query($query) or die ("Echec de la requête : ".$query." ". mysql_error());
 while ($line = mysql_fetch_assoc($result))
 {
 	echo "<tr>";
@@ -51,7 +51,7 @@ while ($line = mysql_fetch_assoc($result))
 	echo "</tr>";
 }
 $query="SELECT * FROM url_referer WHERE url_domains='".$domain."'GROUP BY url_domains, referer_domains";
-$result = mysql_query($query) or die ("Echec de la requÃªte : ".$query." ". mysql_error());
+$result = mysql_query($query) or die ("Echec de la requête : ".$query." ". mysql_error());
 while ($line = mysql_fetch_assoc($result))
 {
 	echo "<tr>";

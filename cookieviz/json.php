@@ -23,7 +23,7 @@ $init_max_date=0;
 
 if(isset($_GET["max_date"]))
 {
-	$init_max_date = 	mysql_real_escape_string($_GET["max_date"]);
+	$init_max_date = 	mysqli_real_escape_string($_GET["max_date"]);
 	if (!is_numeric($init_max_date))
 	{
 		$init_max_date="";
@@ -32,7 +32,7 @@ if(isset($_GET["max_date"]))
 
 if(isset($_GET["domain"]))
 {
-	$domain = mysql_real_escape_string($_GET["domain"]);
+	$domain = mysqli_real_escape_string($_GET["domain"]);
 }
 
 $max_date = $init_max_date;
