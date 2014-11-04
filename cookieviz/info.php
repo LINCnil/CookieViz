@@ -20,7 +20,7 @@ require "connect.php";
 
 if(isset($_GET["domain"]))
 {
-	$domain = mysqli_real_escape_string($_GET["domain"]);
+	$domain = mysqli_real_escape_string($link, $_GET["domain"]);
 	
 }
 else
@@ -37,9 +37,10 @@ echo '<table id="infos">';
  echo "</tr>";
  echo "</thead>";
  echo "<tbody>";
-$query="SELECT * FROM url_referer WHERE referer_domains='".$domain."'GROUP BY url_domains, referer_domains";
-$result = mysql_query($query) or die ("Echec de la requête : ".$query." ". mysql_error());
-while ($line = mysql_fetch_assoc($result))
+$query=$link->prepare("SELECT * FROM url_referer WHERE referer_domains='".$domain."'GROUP BY url_domains, referer_domains");
+$query->execute();
+$result = $query->get_result();
+while ($line = $result->fetch_assoc())
 {
 	echo "<tr>";
 	if ($line["is_cookie"] == 1)
@@ -50,9 +51,10 @@ while ($line = mysql_fetch_assoc($result))
 	}
 	echo "</tr>";
 }
-$query="SELECT * FROM url_referer WHERE url_domains='".$domain."'GROUP BY url_domains, referer_domains";
-$result = mysql_query($query) or die ("Echec de la requête : ".$query." ". mysql_error());
-while ($line = mysql_fetch_assoc($result))
+$query=$link->prepare("SELECT * FROM url_referer WHERE url_domains='".$domain."'GROUP BY url_domains, referer_domains");
+$query->execute();
+$result = $query->get_result();
+while ($line = $result->fetch_assoc())
 {
 	echo "<tr>";
 	if ($line["is_cookie"] == 1)
