@@ -28,7 +28,7 @@
         particleSystem.screenPadding(80); // leave an extra 80px of whitespace per side
         
         // set up some event handlers to allow for node-dragging
-        that.initMouseHandling()
+        that.initMouseHandling();
       },
       
       redraw:function(){
@@ -55,7 +55,7 @@
           ctx.beginPath();
           ctx.moveTo(pt1.x, pt1.y);
           ctx.lineTo(pt2.x, pt2.y);
-          ctx.stroke()
+          ctx.stroke();
         });
 
         particleSystem.eachNode(function(node, pt){
@@ -65,7 +65,7 @@
           // draw a rectangle centered at pt
           var w = 10;
           ctx.fillStyle = (node.data.alone) ? "orange" : "black";
-          ctx.fillRect(pt.x-w/2, pt.y-w/2, w,w)
+          ctx.fillRect(pt.x-w/2, pt.y-w/2, w,w);
         })
       },
       
@@ -83,13 +83,13 @@
 
             if (dragged && dragged.node !== null){
               // while we're dragging, don't let physics move the node
-              dragged.node.fixed = true
+              dragged.node.fixed = true;
             }
 
             $(canvas).bind('mousemove', handler.dragged);
             $(window).bind('mouseup', handler.dropped);
 
-            return false
+            return false;
           },
           dragged:function(e){
             var pos = $(canvas).offset();
@@ -97,10 +97,10 @@
 
             if (dragged && dragged.node !== null){
               var p = particleSystem.fromScreen(s);
-              dragged.node.p = p
+              dragged.node.p = p;
             }
 
-            return false
+            return false;
           },
 
           dropped:function(e){
@@ -111,7 +111,7 @@
             $(canvas).unbind('mousemove', handler.dragged);
             $(window).unbind('mouseup', handler.dropped);
             _mouseP = null;
-            return false
+            return false;
           }
         };
         
@@ -121,7 +121,7 @@
       }
       
     };
-    return that
+    return that;
   };
 
   $(document).ready(function(){
