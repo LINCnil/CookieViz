@@ -8,8 +8,8 @@
                     var selector = this.options.layout.container.selector + ' ' + this.options.layout.parent.selector;
                     switch(this.options.layout.name) {
                         case 'top':
-                            $(selector).css({borderRadius: '0px 0px 0px 0px'});
-                            $(selector).last().css({borderRadius: '0px 0px 5px 5px'});
+                            $(selector).css({borderRadius: '0'});
+                            $(selector).last().css({borderRadius: '0 0 5px 5px'});
                             break;
                         case 'topCenter':
                         case 'topLeft':
@@ -26,8 +26,8 @@
                             $(selector).last().css({'border-bottom-left-radius': '5px', 'border-bottom-right-radius': '5px'});
                             break;
                         case 'bottom':
-                            $(selector).css({borderRadius: '0px 0px 0px 0px'});
-                            $(selector).first().css({borderRadius: '5px 5px 0px 0px'});
+                            $(selector).css({borderRadius: '0'});
+                            $(selector).first().css({borderRadius: '5px 5px 0 0'});
                             break;
                         default:
                             break;
@@ -42,7 +42,7 @@
                 height         : '100%',
                 backgroundColor: '#000',
                 zIndex         : 10000,
-                opacity        : 0.6,
+                opacity        : .6,
                 display        : 'none',
                 left           : 0,
                 top            : 0
@@ -104,7 +104,7 @@
                         borderBottom: '2px solid #eee',
                         borderLeft  : '2px solid #eee',
                         borderRight : '2px solid #eee',
-                        boxShadow   : "0 2px 4px rgba(0, 0, 0, 0.1)"
+                        boxShadow   : "0 2px 4px rgba(0, 0, 0, .1)"
                     });
                     break;
                 case 'topCenter':
@@ -114,7 +114,7 @@
                     this.$bar.css({
                         borderRadius: '5px',
                         border      : '1px solid #eee',
-                        boxShadow   : "0 2px 4px rgba(0, 0, 0, 0.1)"
+                        boxShadow   : "0 2px 4px rgba(0, 0, 0, .1)"
                     });
                     this.$message.css({fontSize: '13px', textAlign: 'center'});
                     break;
@@ -137,13 +137,13 @@
                         borderTop   : '2px solid #eee',
                         borderLeft  : '2px solid #eee',
                         borderRight : '2px solid #eee',
-                        boxShadow   : "0 -2px 4px rgba(0, 0, 0, 0.1)"
+                        boxShadow   : "0 -2px 4px rgba(0, 0, 0, .1)"
                     });
                     break;
                 default:
                     this.$bar.css({
                         border   : '2px solid #eee',
-                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
+                        boxShadow: "0 2px 4px rgba(0, 0, 0, .1)"
                     });
                     break;
             }
