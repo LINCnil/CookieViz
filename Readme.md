@@ -12,11 +12,11 @@ Installation
 
 **Windows**
 
-Pour installer CookieViz sur windows, vous pouvez télécharger le fichier setup.exe disponible dans la tags "RELEASE" de github.
+Pour installer CookieViz sur Windows, vous pouvez télécharger le fichier ``setup.exe`` disponible dans la tag "RELEASE" de Github.
 
 **Mac OS X et Linux**
 
-Pour déployer le logiciel sur Linux et sur MAC, vous devez disposer d'un serveur web, un serveur de base de données MySQL et PHP5.
+Pour déployer le logiciel sur Linux et sur MAC, vous devez disposer d'un serveur web, un serveur de base de données MySQL, et PHP5.
 
 Il existe deux versions du logiciel de détection des cookies. La première version du logiciel s'appuie sur le binaire ``tshark``. La seconde s'appuie sur le binaire ``mitmdump``. Seule la version ``mitmdump`` permet de surveiller l'utilisation des cookies par des sites tiers utilisant le protocole https.
 
@@ -28,7 +28,7 @@ Enfin, il est nécessaire de modifier les paramètres de connexion à la base de
 
  * ``soft/monitor_tshark_osx.php``
  * ``soft/monitor_mitmdump.php``
- * ``cookieviz/connect.php``
+ * ``cookieviz/settings.inc``
 
 Utilisation
 --
