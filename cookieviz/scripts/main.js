@@ -103,7 +103,7 @@
             return false;
           },
 
-          dropped:function(e){
+          dropped:function(){
             if (dragged===null || dragged.node===undefined) return;
             if (dragged.node !== null) dragged.node.fixed = false;
             dragged.node.tempMass = 1000;
