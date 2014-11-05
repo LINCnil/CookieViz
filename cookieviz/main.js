@@ -40,7 +40,7 @@ if (params["domain"])
 is_open=false;
 $("#show_menu").click(function ($is_open)
 		      {
-			  if (is_open == false)
+			  if (is_open === false)
 			      {
 				  $("#show_menu").text("Fermer Menu");
 				  $("#menu").animate( {top:'0px'} ,500);	
@@ -115,7 +115,7 @@ $("#info").click(function ($domain, $max_date)
 					showhide : false,
 					height : document.body.clientHeight*(20/100),
 					sortable: true,
-					zebra:true,
+					zebra:true
 				});
 				$("#info_window").animate({"top":"70%"});
 				$("#close_window").css({"visibility":"visible"});

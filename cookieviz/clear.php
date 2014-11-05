@@ -16,9 +16,7 @@ You should have received a copy of the GNU General Public License
 along with CookieViz.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 require "connect.php";
 
 $link->query("TRUNCATE url_referer");
 require "disconnect.php";
-?>
