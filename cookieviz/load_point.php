@@ -64,4 +64,3 @@ class point_map
 		return $this->map;
 	}
 }
-?>

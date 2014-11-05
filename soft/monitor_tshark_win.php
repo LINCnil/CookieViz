@@ -335,4 +335,4 @@ while (continue_run($fichier) == TRUE && $tmp_buffer = stream_get_line($handle,0
     pclose($handle);
     mysql_close($link) or die('Impossible de se déconnecter : ' . mysql_error());
     exit();
-?>
+

@@ -68,4 +68,3 @@ while ($line = $result->fetch_assoc())
 echo "</tbody>";
 echo "</table>";
 require "disconnect.php";
-?>
