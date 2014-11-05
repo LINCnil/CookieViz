@@ -16,13 +16,10 @@ You should have received a copy of the GNU General Public License
 along with CookieViz.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-$fichier="..\..\soft\.install";
-$fp = fopen($fichier,'r');
-$mdp = fgets($fp);
-fclose($fp);
+include_once 'settings.inc';
 
-$link = new mysqli('localhost', 'root', $mdp, 'CookieViz');
+$link = new mysqli(DB_SERVER, DB_USER, DB_PASSWD, DB_NAME);
 if (mysqli_connect_errno())
 {
-	printf("Connect failed: %s\n", mysqli_connect_error());
+	printf("Connection failed: %s\n", mysqli_connect_error());
 }
