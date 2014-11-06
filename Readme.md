@@ -1,7 +1,9 @@
 CookieViz
 ===
+[![Issue Stats](http://issuestats.com/github/LaboCNIL/CookieViz/badge/pr)](http://issuestats.com/github/LaboCNIL/CookieViz)
+[![Issue Stats](http://issuestats.com/github/LaboCNIL/CookieViz/badge/issue)](http://issuestats.com/github/LaboCNIL/CookieViz)
 
-CookieViz est outil de visualisation qui permet de mesurer l'impact des cookies lors de votre propre navigation.
+**CookieViz est outil de visualisation qui permet de mesurer l'impact des cookies lors de votre propre navigation.**
 
 Concrètement, Cookieviz analyse les interactions entre votre ordinateur, votre navigateur et des sites et serveurs distants. En l'installant vous pourrez savoir à quels autres acteurs le site que vous visitez envoie des informations.
 
@@ -12,11 +14,11 @@ Installation
 
 **Windows**
 
-Pour installer CookieViz sur windows, vous pouvez télécharger le fichier setup.exe disponible dans la tags "RELEASE" de github.
+Pour installer CookieViz sur Windows, vous pouvez télécharger le fichier ``setup.exe`` disponible dans la tag "RELEASE" de Github.
 
 **Mac OS X et Linux**
 
-Pour déployer le logiciel sur Linux et sur MAC, vous devez disposer d'un serveur web, un serveur de base de données MySQL et PHP5.
+Pour déployer le logiciel sur Linux et sur MAC, vous devez disposer d'un serveur web, un serveur de base de données MySQL, et PHP5.
 
 Il existe deux versions du logiciel de détection des cookies. La première version du logiciel s'appuie sur le binaire ``tshark``. La seconde s'appuie sur le binaire ``mitmdump``. Seule la version ``mitmdump`` permet de surveiller l'utilisation des cookies par des sites tiers utilisant le protocole https.
 
@@ -26,9 +28,9 @@ Il faut ensuite déplacer le répertoire cookieviz à la racine de votre serveur
 Puis, déposer le répertoire soft dans le répertoire de votre choix.
 Enfin, il est nécessaire de modifier les paramètres de connexion à la base de données dans les fichiers suivants :
 
+ * ``cookieviz/settings.inc``
  * ``soft/monitor_tshark_osx.php``
  * ``soft/monitor_mitmdump.php``
- * ``cookieviz/connect.php``
 
 Utilisation
 --
@@ -53,6 +55,8 @@ Vous pouvez constater le résultat en vous connectant avec un navigateur sur vot
 Contribuer
 --
 
-CookieViz est disponible sous license GPLv3.
+**CookieViz est disponible sous license GPLv3 et peut être enrichi par chacun des utilisateurs.** Les plus expérimentés peuvent améliorer cette version initiale de notre outil ou corriger d’éventuels bugs. N'oubliez pas de soumettre vos contributions via des pull-requests.
+
+**Vous avez une idée que vous souhaitez partager avec nous pour améliorer ce projet ?** Vous avez envie de vous appuyer sur cette base pour construire un projet de pédagogie de la traçabilité numérique ? Contactez l’équipe du laboratoire CNIL par mail - ip(at)cnil.fr - ou via le compte Twitter [@CNIL](https://twitter.com/CNIL).
 
 Pour de plus amples informations, voir le fichier ``LICENSE`` inclus.
