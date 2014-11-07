@@ -1,3 +1,7 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
 .node {
 	stroke: #fff;
 	stroke-width: 1.5px;
@@ -46,9 +50,7 @@
 	z-index: 5;
 	opacity: .8;
 	visibility: hidden;
-	border-style: solid;
-	border-color: #000;
-	border-width: 1px;
+	border: 1px solid #000;
 }
 
 .context_line {
@@ -59,9 +61,7 @@
 	height: 28px;
 	z-index: 3;
 	cursor: pointer;
-	border-style: solid;
-	border-color: #000;
-	border-width: 1px;
+	border-style: 1px solid #000;
 }
 
 .context_line:hover {
@@ -104,7 +104,6 @@
 
 .filter {
 	font-size: 90%;
-	font-family: Arial, Helvetica, sans-serif, bold;
 	font-weight: bold;
 	margin-left: auto;
 	margin-right: auto;
@@ -126,7 +125,6 @@
 .axis_x_container {
 	text-align: center;
 	font-size: 90%;
-	font-family: Arial, Helvetica, sans-serif, bold;
 	font-weight: bold;
 }
 
@@ -134,7 +132,6 @@
 	text-align: center;
 	vertical-align: bottom;
 	font-size: 90%;
-	font-family: Arial, Helvetica, sans-serif, bold;
 	font-weight: bold;
 }
 
@@ -161,7 +158,6 @@
 	vertical-align: middle;
 	border-style: 1px solid #000;
 	font-size: 95%;
-	font-family: Arial, Helvetica, sans-serif;
 }
 
 .axis_x {
@@ -205,7 +201,6 @@ img {
 .subtitle {
 	margin-top: 3px;
 	font-size: 100%;
-	font-family: Arial, Helvetica, sans-serif;
 	text-align: center;
 	vertical-align: bottom;
 	background: #231F20;
