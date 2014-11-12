@@ -20,19 +20,19 @@ along with CookieViz.  If not, see <http://www.gnu.org/licenses/>.
 
 class point
 {
-	var $id;
-	var $url_domains;
-	var $referer_domains;
-	var $date_time;
-	var $url;
-	var $referer;
-	var $is_cookie;
-	var $link;
-	var $cpt;
-	var $has_link;
-	var $size;
+	public $id;
+	public $url_domains;
+	public $referer_domains;
+	public $date_time;
+	public $url;
+	public $referer;
+	public $is_cookie;
+	public $link;
+	public $cpt;
+	public $has_link;
+	public $size;
 	
-	function __construct($line, $i)
+	public function __construct($line, $i)
 	{
 		$this->id = $i;
 		$this->url_domains = $line["url_domains"];
@@ -46,7 +46,8 @@ class point
 		$this->size = 13 + $line["Cpt"]/10;
 		$this->has_link = 0;
 	}
-	function add_link($referer, $cookie)
+	
+	public function add_link($referer, $cookie)
 	{
 		if ($this->is_cookie == 0 && $cookie == 1)
 		{
@@ -56,7 +57,14 @@ class point
 		$this->link[$this->cpt] = $referer;
 		$this->cpt++;
 	}
-	function as_link_with($domain)
+	/**
+	 * @name as_link_with
+	 * @param string target domaine
+	 * @return bool false
+	 * @return bool true
+	 *
+	 **/
+	public function as_link_with($domain)
 	{
 		if ($this->has_link != 0)
 		{
@@ -70,7 +78,8 @@ class point
 		}	
 		return FALSE;
 	}
-	function increment($line)
+	
+	public function increment($line)
 	{
 		$this->size = $this->size + $line["Cpt"]/10;
 		$this->date_time = $line["date"];
