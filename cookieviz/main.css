@@ -1,5 +1,5 @@
 body {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 }
 
 .node {
@@ -122,17 +122,14 @@ body {
 	margin-bottom: 3px;
 }
 
-.axis_x_container {
+.axis_x_container, .legende_container {
 	text-align: center;
 	font-size: 90%;
 	font-weight: bold;
 }
 
 .legende_container {
-	text-align: center;
 	vertical-align: bottom;
-	font-size: 90%;
-	font-weight: bold;
 }
 
 .legende {
@@ -144,8 +141,7 @@ body {
 	z-index: 3;
 	font-size: 90%;
 	vertical-align: middle;
-	border-width: 1px;
-	border-color: #000;
+	border: 1px #000;
 }
 
 .legende_img {
@@ -191,7 +187,6 @@ img {
 .title {
 	width: 95%;
 	margin: 3px auto;
-	margin-bottom: 3px;
 	background: url('img/logo.png') no-repeat center center fixed;
 	text-align: center;
 	height: 50px;
