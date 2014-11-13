@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
  * This file holds the database settings used by CookieViz.
