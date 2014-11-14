@@ -93,10 +93,10 @@ function init() {
         return $mdp;
     }
 
-    $link   = mysql_connect('localhost', 'root', 'mdpinit') or die('Impossible de se connecter : ' . mysql_error());
+    $link   = mysqli_connect('localhost', 'root', 'mdpinit') or die('Impossible de se connecter : ' . mysqli_error());
     $mdp    = generer_mot_de_passe();
     $query  = "GRANT ALL PRIVILEGES ON CookieViz.* TO 'root'@'localhost' IDENTIFIED BY '" . $mdp . "'";
-    $result = mysql_query($query) or die('Échec de la requête : ' . mysql_error());
+    $result = mysqli_query($query) or die('Échec de la requête : ' . mysqli_error());
     $fp     = fopen($fichier, 'w+');
     fwrite($fp, $mdp);
     fclose($fp);
@@ -130,9 +130,9 @@ if ($PROXY_HOST != "") {
 $start   = NULL;
 $timeout = 9;
 error_reporting(E_ALL);
-$link    = mysql_connect('localhost', 'root', $mdp) or die('Impossible de se connecter : ' . mysql_error());
+$link    = mysqli_connect('localhost', 'root', $mdp) or die('Impossible de se connecter : ' . mysqli_error());
 print "Connected successfully\n";
-mysql_select_db('CookieViz') or die('Impossible de sélectionner la base de données' . mysql_error());
+mysqli_select_db('CookieViz') or die('Impossible de sélectionner la base de données' . mysqli_error());
 $fichier = getcwd() . "\soft\.run";
 $fp      = fopen($fichier, 'w');
 fwrite($fp, '0');
@@ -227,23 +227,23 @@ while (continue_run($fichier) == TRUE && $tmp_buffer = stream_get_line($handle, 
             $timestamp = time();
             if (strcmp($referer_domain, "") != 0) {
                 $query  = 'SELECT url_domains FROM url_referer WHERE url_domains = "' . $referer_domain . '" AND referer_domains = ""';
-                $result = mysql_query($query) or die('Échec de la requête : ' . mysql_error());
-                if (mysql_num_rows($result) != 0) {
+                $result = mysqli_query($query) or die('Échec de la requête : ' . mysqli_error());
+                if (mysqli_num_rows($result) != 0) {
                     $exist = TRUE;
                 } else {
                     $exist = FALSE;
                 }
                 if ($exist == FALSE) {
                     $query  = 'INSERT INTO url_referer (url_domains,date,is_cookie,cookie) VALUES ("' . $referer_domain . '","' . $timestamp . '", FALSE, "' . $cookie . '")';
-                    $result = mysql_query($query) or die('Échec de la requête : ' . mysql_error());
+                    $result = mysqli_query($query) or die('Échec de la requête : ' . mysqli_error());
                 }
             }
             $exist = FALSE;
             if (strcmp($cookie, "") == 0) {
                 $query  = 'SELECT url_domains,referer_domains, is_cookie,cookie, Cpt FROM url_referer WHERE url_domains = "' . $url_domain . '" AND referer_domains = "' . $referer_domain . '" AND is_cookie = FALSE';
-                $result = mysql_query($query) or die('Échec de la requête : ' . mysql_error());
-                if (mysql_num_rows($result) != 0) {
-                    while ($line = mysql_fetch_assoc($result)) {
+                $result = mysqli_query($query) or die('Échec de la requête : ' . mysqli_error());
+                if (mysqli_num_rows($result) != 0) {
+                    while ($line = mysqli_fetch_assoc($result)) {
                         $cpt   = $line["Cpt"];
                         $exist = TRUE;
                     }
@@ -253,13 +253,13 @@ while (continue_run($fichier) == TRUE && $tmp_buffer = stream_get_line($handle, 
                 } else {
                     $cpt++;
                     $query  = 'UPDATE url_referer SET cpt=' . $cpt . ', date =' . $timestamp . '  WHERE url_domains ="' . $url_domain . '" AND referer_domains = "' . $referer_domain . '" AND is_cookie = FALSE';
-                    $result = mysql_query($query) or die('Échec de la requête : ' . mysql_error());
+                    $result = mysqli_query($query) or die('Échec de la requête : ' . mysqli_error());
                 }
             } else {
                 $query  = 'SELECT url_domains,referer_domains,is_cookie,cookie, Cpt FROM url_referer WHERE url_domains ="' . $url_domain . '" AND referer_domains = "' . $referer_domain . '" AND is_cookie = TRUE';
-                $result = mysql_query($query) or die('Échec de la requête : ' . mysql_error());
-                if (mysql_num_rows($result) != 0) {
-                    while ($line = mysql_fetch_assoc($result)) {
+                $result = mysqli_query($query) or die('Échec de la requête : ' . mysqli_error());
+                if (mysqli_num_rows($result) != 0) {
+                    while ($line = mysqli_fetch_assoc($result)) {
                         $cpt   = $line["Cpt"];
                         $exist = TRUE;
                     }
@@ -268,17 +268,17 @@ while (continue_run($fichier) == TRUE && $tmp_buffer = stream_get_line($handle, 
                 } else {
                     $cpt++;
                     $query  = 'UPDATE url_referer SET cpt=' . $cpt . ', date =' . $timestamp . ' WHERE url_domains ="' . $url_domain . '" AND referer_domains = "' . $referer_domain . '" AND is_cookie = TRUE';
-                    $result = mysql_query($query) or die('Échec de la requête : ' . mysql_error());
+                    $result = mysqli_query($query) or die('Échec de la requête : ' . mysqli_error());
                 }
             }
 
-            $result = mysql_query($query) or die('Échec de la requête : ' . mysql_error());
+            $result = mysqli_query($query) or die('Échec de la requête : ' . mysqli_error());
         } else {
             print "invalid url\n";
         }
     }
 }
 pclose($handle);
-mysql_close($link) or die('Impossible de se déconnecter : ' . mysql_error());
+mysqli_close($link) or die('Impossible de se déconnecter : ' . mysqli_error());
 exit();
 
