@@ -43,22 +43,22 @@ if ($PROXY_HOST != "") {
         print "Connected with proxy auth\n";
         $auth = base64_encode("$PROXY_USER:$PROXY_PASS");
         stream_context_set_default(
-                array(
-                    'http' => array(
+                [
+                    'http' => [
                         'proxy'           => "tcp://$PROXY_HOST:$PROXY_PORT",
                         'request_fulluri' => true,
                         'timeout'         => 1,
-                        'header'          => "Proxy-Authorization: Basic $auth")
-        ));
+                        'header'          => "Proxy-Authorization: Basic $auth"]
+        ]);
     } else {
         print "Connected with proxy whitout auth\n";
         stream_context_set_default(
-                array(
-                    'http' => array(
+                [
+                    'http' => [
                         'proxy'           => "tcp://$PROXY_HOST:$PROXY_PORT",
                         'request_fulluri' => true,
-                        'timeout'         => 1)
-        ));
+                        'timeout'         => 1]
+        ]);
     }
 }
 $start   = NULL;
