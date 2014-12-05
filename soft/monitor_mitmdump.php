@@ -44,25 +44,25 @@ if ($PROXY_HOST != "")
 	{
 		$auth = base64_encode("$PROXY_USER:$PROXY_PASS");
 		stream_context_set_default(
-		 array(
-	   	 'http' => array(
+		 [
+	   	 'http' => [
 	      	 'proxy' => "tcp://$PROXY_HOST:$PROXY_PORT",
 	         'request_fulluri' => true,
 		 'timeout' => 1,
 		 'header' => "Proxy-Authorization: Basic $auth"
 		  // Remove the 'header' option if proxy authentication is not required
-			)));
+			]]);
 	}
 	else
 	{
 		 stream_context_set_default(
-                 array(
-                 'http' => array(
+                 [
+                 'http' => [
                  'proxy' => "tcp://$PROXY_HOST:$PROXY_PORT",
                  'request_fulluri' => true,
                  'timeout' => 1
                   // Remove the 'header' option if proxy authentication is not required
-                        )));
+                        ]]);
 
 	}
 }
