@@ -1,5 +1,4 @@
-CookieViz
-===
+# CookieViz
 [![Issue Stats](http://issuestats.com/github/LaboCNIL/CookieViz/badge/pr)](http://issuestats.com/github/LaboCNIL/CookieViz)
 [![Issue Stats](http://issuestats.com/github/LaboCNIL/CookieViz/badge/issue)](http://issuestats.com/github/LaboCNIL/CookieViz)
 
@@ -9,14 +8,13 @@ Concrètement, Cookieviz analyse les interactions entre votre ordinateur, votre 
 
 Une vidéo présentant le fonctionnement de l'outil est disponible sur Youtube à l'adresse suivante: http://www.youtube.com/watch?v=5UJGlDPRLCw.
 
-Installation
---
+## Installation
 
-**Windows**
+### Windows
 
 Pour installer CookieViz sur Windows, vous pouvez télécharger le fichier ``setup.exe`` disponible dans la tag "RELEASE" de Github.
 
-**Mac OS X et Linux**
+### Mac OS X et Linux
 
 Pour déployer le logiciel sur Linux et sur MAC, vous devez disposer d'un serveur web, un serveur de base de données MySQL, et PHP5.
 
@@ -32,16 +30,15 @@ Enfin, il est nécessaire de modifier les paramètres de connexion à la base de
  * ``soft/monitor_tshark_osx.php``
  * ``soft/monitor_mitmdump.php``
 
-Utilisation
---
+## Utilisation
 
 Pour lancer la surveillance de l'utilisation des cookies, il faut alors exécuter les commandes suivantes dans un terminal:
 
-**Pour la version tshark:**
+### Pour la version tshark:
 
 ``php /chemin vers le répertoire soft/monitor_tshark_osx.php <index de la carte réseau utilisée pour communiquer sur internet>``
 
-**Pour la version mitmpdump:**
+### Pour la version mitmpdump:
 
 ``php /chemin vers le répertoire soft/monitor_mitmdump.php``
 
@@ -52,8 +49,7 @@ L'adresse du proxy est la suivante: ``localhost:8080``
 Vous pouvez ensuite naviguer comme auparavant sur des sites web.
 Vous pouvez constater le résultat en vous connectant avec un navigateur sur votre serveur web ``http://adresse_de_votre_serveur/cookieviz/``
 
-Contribuer
---
+## Contribuer
 
 **CookieViz est disponible sous license GPLv3 et peut être enrichi par chacun des utilisateurs.** Les plus expérimentés peuvent améliorer cette version initiale de notre outil ou corriger d’éventuels bugs. N'oubliez pas de soumettre vos contributions via des pull-requests.
 
