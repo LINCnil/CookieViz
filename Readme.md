@@ -57,6 +57,6 @@ Contribuer
 
 **CookieViz est disponible sous license GPLv3 et peut être enrichi par chacun des utilisateurs.** Les plus expérimentés peuvent améliorer cette version initiale de notre outil ou corriger d’éventuels bugs. N'oubliez pas de soumettre vos contributions via des pull-requests.
 
-**Vous avez une idée que vous souhaitez partager avec nous pour améliorer ce projet ?** Vous avez envie de vous appuyer sur cette base pour construire un projet de pédagogie de la traçabilité numérique ? Contactez l’équipe du laboratoire CNIL par mail - ip(at)cnil.fr - ou via le compte Twitter [@CNIL](https://twitter.com/CNIL).
+**Vous avez une idée que vous souhaitez partager avec nous pour améliorer ce projet ?** Vous avez envie de vous appuyer sur cette base pour construire un projet de pédagogie de la traçabilité numérique ? Vous pouvez contacter le créateur de l'application via le compte Twitter [@StephanePetitco](https://twitter.com/StephanePetitco)Contactez l’équipe du laboratoire CNIL par mail - ip(at)cnil.fr - ou via le compte Twitter [@LINCnil](https://twitter.com/LINCnil).
 
 Pour de plus amples informations, voir le fichier ``LICENSE`` inclus.
