@@ -1,3 +1,5 @@
+**La version actuelle de Cookieviz n'est plus maintenue et son installeur ne fonctionne pas avec les dernières génération de Windows. Une nouvelle version sera proposée au téléchargement en janvier 2020.**
+
 CookieViz
 ===
 [![Issue Stats](http://issuestats.com/github/LaboCNIL/CookieViz/badge/pr)](http://issuestats.com/github/LaboCNIL/CookieViz)
