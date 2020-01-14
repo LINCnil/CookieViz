@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="css/browser.css" />
+        <script src="js/browser.js"></script>
+        <script src="cookieviz/database.js"></script>
+        <script src="js/crawler.js"></script>
+    </head>
+    <body>
+        <header>
+            <button title="Page précédente" id='back'> &#x2190; </button>
+            <button title="Page suivante" id='forward'> &#x2192;</button>
+            <button title="Actualiser cette page" id='refresh'> &#8634; </button>
+
+            <input type="url" id='address' class='address'/>
+            <button title="Nouvelle fenêtre CookieViz" id='cookieviz'/> &oast; </button>
+        </header>
+
+        <div id='splash' class='splash'>
+            Découvrez la face cachée du Web!
+        </div>
+
+        <iframe id='browser' src='about:blank' nwfaketop nwdisable/>
+    </body>
+</html>

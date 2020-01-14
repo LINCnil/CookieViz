@@ -56,7 +56,7 @@ $("#show_menu").click(function ($is_open) {
 });
 only_cookie = false;
 $("#cookie").click(function ($data_nodes, $data_links, $map_nodes_bis, $map_links, $graph, $cpt) {
-    location.href = "index.php";
+    location.href = "index.html";
 });
 $("#reset").click(function () {
     reset_graph();
@@ -88,22 +88,23 @@ $("#expand").click(function ($domain, $max_date) {
     domain = $("#context_menu").attr("domain");
     $("#context_menu").css({"visibility": "hidden"});
 });
-$("#info").click(function ($domain, $max_date) {
+$("#info").click(function () {
     //$("#title").html("<b>"+domain+"</b>");
-
-    res = get_info($("#context_menu").attr("domain"));
-    $("#window_content").html("");
-    $("#window_content").html(res);
-    $("#infos").fixheadertable({
-        caption: $("#context_menu").attr("domain"),
-        showhide: false,
-        height: document.body.clientHeight * (20 / 100),
-        sortable: true,
-        zebra: true
+    let domain_click = $("#context_menu").attr("domain");
+    get_info(domain_click).then(res => {
+        $("#window_content").html("");
+        $("#window_content").html(res);
+        $("#infos").fixheadertable({
+            caption: $("#context_menu").attr("domain"),
+            showhide: false,
+            height: document.body.clientHeight * (20 / 100),
+            sortable: true,
+            zebra: true
+        });
+        $("#info_window").animate({"top": "70%"});
+        $("#close_window").css({"visibility": "visible"});
+        $("#context_menu").css({"visibility": "hidden"});
     });
-    $("#info_window").animate({"top": "70%"});
-    $("#close_window").css({"visibility": "visible"});
-    $("#context_menu").css({"visibility": "hidden"});
 });
 $("#close_window").click(function ($domain, $max_date) {
     $("#close_window").css({"visibility": "hidden"});
@@ -117,19 +118,23 @@ $("#chart").click(function ($domain, $max_date) {
     }
 });
 graph = new draw_points("#chart", w, h);
-res = get_json(max_date, domain);
-data_nodes = res.inf_nodes;
-data_links = res.inf_links;
-if (res.max_date != "") {
-    if (max_date != res.max_date) {
-        max_date = res.max_date;
-    }
+
+function update(){
+    get_json(max_date, domain).then(res => {
+        data_nodes = [];
+        data_links = [];
+        data_nodes = res.inf_nodes;
+        data_links = res.inf_links;
+        if (res.max_date != "") {
+            if (max_date != res.max_date) {
+                max_date = res.max_date;
+            }
+        }
+        cpt = load_nodes_bis(data_nodes, data_links, map_nodes_bis, map_links, graph, cpt);
+    });
 }
-cpt = load_nodes_bis(data_nodes, data_links, map_nodes_bis, map_links, graph, cpt);
-setInterval(function ($domain, $cpt) {
-    res = get_json(max_date, domain);
-    data_nodes = [];
-    data_links = [];
+
+get_json(max_date, domain).then(res =>{
     data_nodes = res.inf_nodes;
     data_links = res.inf_links;
     if (res.max_date != "") {
@@ -137,5 +142,13 @@ setInterval(function ($domain, $cpt) {
             max_date = res.max_date;
         }
     }
-    cpt = load_nodes_bis(data_nodes, data_links, map_nodes_bis, map_links, graph, cpt);
-}, 4000);
+    cpt = load_nodes_bis(data_nodes, data_links, map_nodes_bis, map_links, graph, cpt);    
+});
+
+setInterval(update, 4000); 
+
+window.onresize = function(){
+    w = $("#chart").width();
+    h = $("#chart").height();
+    graph.resize(w,h);
+}

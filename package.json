@@ -1,0 +1,76 @@
+{
+  "main": "browser.html",
+  "name": "CookieViz",
+  "description": "CookieViz est outil de visualisation qui permet de mesurer l'impact des cookies lors de votre propre navigation.",
+  "version": "0.0.2",
+  "nodejs": true,
+  "keywords": [
+    "cookie",
+    "CNIL",
+    "CookieViz"
+  ],
+  "window": {
+    "title": "CookieViz",
+    "icon": "icons/browser-128x128.png",
+    "toolbar": false,
+    "frame": true,
+    "width": 1024,
+    "height": 700,
+    "min_width": 250,
+    "min_height": 250
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LINCnil/CookieViz"
+  },
+  "author": "Laboratoire de l'Innovation de la CNIL (LINC)",
+  "license": "LGPL3",
+  "bugs": {
+    "url": "https://github.com/LINCnil/CookieViz/issues"
+  },
+  "dependencies": {
+    "psl": "^1.4.0"
+  },
+  "devDependencies": {
+    "nwjs-builder-phoenix": "^1.15.0"
+  },
+  "scripts": {
+    "dist": "build --tasks win-x86,win-x64,linux-x86,linux-x64,mac-x64 --mirror https://dl.nwjs.io/ .",
+    "start": "run --x86 --mirror https://dl.nwjs.io/ ."
+  },
+  "build": {
+    "appId": "cnil.CookieViz",
+    "nwVersion": "0.43.2",
+    "packed": true,
+    "targets": [
+      "zip",
+      "nsis7z"
+    ],
+    "strippedProperties": [
+      "build"
+    ],
+    "outputPattern": "${NAME} ${VERSION} ${PLATFORM} ${ARCH}",
+    "win": {
+      "productName": "CookieViz",
+      "companyName": "CNIL",
+      "copyright": "CNIL",
+      "icon": "./icons/browser.ico"
+    },
+    "mac": {
+      "displayName": "CookieViz",
+      "copyright": "CNIL",
+      "icon": "./icons/browser.icns",
+      "plistStrings": {
+        "CFBundleIdentifier": "cnil.CookieViz",
+        "CFBundleDocumentTypes": []
+      }
+    },
+    "nsis": {
+      "installDirectory": "$PROGRAMFILES\\${_COMPANYNAME}\\${_APPNAME}",
+      "diffUpdaters": true
+    }
+  }
+}
