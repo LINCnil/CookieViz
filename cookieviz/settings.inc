@@ -23,9 +23,9 @@ define('DB_NAME', 'CookieViz');
  * It is recommended that you use a unique user.
  * Here, we're using 'CookieViz', but you may change that to any valid user.
  */
-define('DB_USER', 'CookieViz');
+define('DB_USER', 'user');
 
 /**
  * The password of the CookieViz database user.
  */
-define('DB_PASSWD', '');
+define('DB_PASSWD', 'cookieviz');

@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  cookieviz:
+    image: cookieviz
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000

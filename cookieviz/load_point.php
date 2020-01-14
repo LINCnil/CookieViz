@@ -30,7 +30,7 @@ class point_map {
 
     public function __construct($domain, $link) {
         $this->domain     = $domain;
-        $this->load_query = 'SELECT * FROM url_referer GROUP BY url_domains, referer_domains, date ORDER BY date ASC';
+        $this->load_query = 'SELECT * FROM url_referer GROUP BY id, url_domains, referer_domains, date ORDER BY date ASC';
         $this->load($link);
     }
 

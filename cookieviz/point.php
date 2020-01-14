@@ -38,9 +38,6 @@ class point
 		$this->url_domains = $line["url_domains"];
 		$this->referer_domains = $line["referer_domains"];
 		$this->date_time = $line["date"];
-		$this->url = $line["url"];
-		$this->referer = $line["referer"];
-		$this->url = $line["url"];
 		$this->is_cookie = $line["is_cookie"];
 		$this->cpt = 0;
 		$this->size = 13 + $line["Cpt"]/10;

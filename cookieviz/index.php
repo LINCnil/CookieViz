@@ -32,8 +32,6 @@ along with CookieViz.  If not, see <http://www.gnu.org/licenses/>.
 		<script type="text/javascript" src="libs/noty/layouts/topRight.js"></script>
 		<script type="text/javascript" src="libs/noty/themes/default.js"></script>
 		<script type="text/javascript" src="libs/d3/d3.min.js"></script>
-		<script type="text/javascript" src="libs/d3/src/geom.js"></script>
-		<script type="text/javascript" src="libs/d3/layout/layout.js"></script>
 		<script type="text/javascript" src="function.js"></script>
 		<script type="text/javascript" src="libs/jquery/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="libs/jquery/jquery.fixheadertable.min.js"></script>
@@ -71,6 +69,9 @@ along with CookieViz.  If not, see <http://www.gnu.org/licenses/>.
 			<div class="legende_container">
 				<div class="legende">Requête avec cookie</div>
 				<div class="legende_img"><img  src="./img/cookie_link.png"/></div>
+			</div>
+			<div class="legende_container">
+				<div class="legende"><a href="http://mitm.it/cert/pem"> Recuperer le certificat de dechiffrement </a></div>
 			</div>
 			
 

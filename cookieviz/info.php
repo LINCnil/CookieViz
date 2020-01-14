@@ -1,5 +1,5 @@
 <?php
-/*Copyright (c) 2013, Stéphane Petitcolas
+/*Copyright (c) 2013, Stï¿½phane Petitcolas
 This file is part of CookieViz
 
 CookieViz is free software: you can redistribute it and/or modify
@@ -37,7 +37,7 @@ echo '<table id="infos">';
  echo "</tr>";
  echo "</thead>";
  echo "<tbody>";
-$query=$link->prepare("SELECT * FROM url_referer WHERE referer_domains='".$domain."'GROUP BY url_domains, referer_domains");
+$query=$link->prepare("SELECT * FROM url_referer WHERE referer_domains='".$domain."'");
 $query->execute();
 $result = $query->get_result();
 while ($line = $result->fetch_assoc())
@@ -51,7 +51,7 @@ while ($line = $result->fetch_assoc())
 	}
 	echo "</tr>";
 }
-$query=$link->prepare("SELECT * FROM url_referer WHERE url_domains='".$domain."'GROUP BY url_domains, referer_domains");
+$query=$link->prepare("SELECT * FROM url_referer WHERE url_domains='".$domain."'");
 $query->execute();
 $result = $query->get_result();
 while ($line = $result->fetch_assoc())
