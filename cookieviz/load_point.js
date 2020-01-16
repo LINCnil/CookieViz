@@ -1,23 +1,3 @@
-var databaseName = 'CookieViz';
-var versionNumber = '1.0';
-var textDescription = 'my first database';
-var estimatedSizeOfDatabase = 2 * 1024 * 1024;
-
-var db = openDatabase(
-    databaseName,
-    versionNumber,
-    textDescription,
-    estimatedSizeOfDatabase
-);
-
-function errorHandler(transaction, error) {
-    if (!error) {
-        console.log("error:" + transaction.message);
-        return;
-    }
-    console.log("error:" + error.message)
-}
-
 async function get_map() {
     return new Promise((resolve, reject) => {
         const load_query = 'SELECT * FROM url_referer GROUP BY id, url_domains, referer_domains, date ORDER BY date ASC';
