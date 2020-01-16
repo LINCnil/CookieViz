@@ -2,7 +2,7 @@
   "main": "browser.html",
   "name": "CookieViz",
   "description": "CookieViz est outil de visualisation qui permet de mesurer l'impact des cookies lors de votre propre navigation.",
-  "version": "0.0.2",
+  "version": "2.0.0",
   "nodejs": true,
   "keywords": [
     "cookie",
@@ -39,7 +39,7 @@
   },
   "scripts": {
     "dist": "build --tasks win-x86,win-x64,linux-x86,linux-x64,mac-x64 --mirror https://dl.nwjs.io/ .",
-    "start": "run --x86 --mirror https://dl.nwjs.io/ ."
+    "start": "run --x64 --mirror https://dl.nwjs.io/ ."
   },
   "build": {
     "appId": "cnil.CookieViz",

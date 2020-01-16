@@ -75,17 +75,38 @@ function closeCookieViz(){
     cookieviz_windows = [];
 }
 
-win.on('close', function () {
+deleteFolderRecursive = function(path) {
+    var files = [];
+    if( fs.existsSync(path) ) {
+        files = fs.readdirSync(path);
+        files.forEach(function(file,index){
+            var curPath = path + "/" + file;
+            if(fs.lstatSync(curPath).isDirectory()) { // recurse
+                deleteFolderRecursive(curPath);
+            } else { // delete file
+                try{
+                    fs.unlinkSync(curPath);
+                } catch (error){
+                    console.log(error);
+                }  
+            }
+        });
+        try{
+            fs.rmdirSync(path);
+        }catch (error){
+            console.log(error);
+        }
+    }
+};
+
+
+win.on('close', async function () {
     this.hide(); // Pretend to be closed already
     console.log("En cours de fermeture...");
     closeCookieViz();
 
-    // Remove cache
-    var fs = require('fs-extra');
-    var dataPath = require('nw.gui').App.dataPath;
-    fs.remove(dataPath, err => {
-        console.error(err)
-    });
+    deleteFolderRecursive(require('nw.gui').App.dataPath);
+
     this.close(true); // then close it forcefully
 });
 
