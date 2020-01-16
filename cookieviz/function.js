@@ -305,7 +305,9 @@ function draw_points(el, w, h)
 	  node.exit().remove();
 	 nodeEnter.append("svg:image")
 	.attr("class", "node")
-	.attr("xlink:href", function(d) {var ico = "https://www.google.com/s2/favicons?domain="+d.name;return ico})
+	.attr("xlink:href", function(d) {
+		return favicons[d.name];
+	})
 	.attr("x", "-8")
 	.attr("y", "-8")
 	.attr("width", "16")

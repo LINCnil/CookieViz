@@ -32,6 +32,7 @@
     "url": "https://github.com/LINCnil/CookieViz/issues"
   },
   "dependencies": {
+    "get-website-favicon": "0.0.7",
     "psl": "^1.4.0"
   },
   "devDependencies": {
