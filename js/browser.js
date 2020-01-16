@@ -2,7 +2,7 @@ var gui = require('nw.gui');
 var win = gui.Window.get();
 var fs = require('fs');
 
-const homepage = "http://www.cnil.fr"
+const homepage = "https://linc.cnil.fr/fr/cookieviz-une-dataviz-en-temps-reel-du-tracking-de-votre-navigation"
 var cookieviz_windows = [];
 
 window.addEventListener(
