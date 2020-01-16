@@ -3,7 +3,7 @@ CookieViz
 
 **CookieViz est outil de visualisation qui permet de mesurer l'impact des cookies lors de votre propre navigation.**
 
-Cookieviz analyse les interactions un navigateur et des sites et serveurs distants. Vous pourrez savoir à quels autres acteurs le site que vous visitez envoie des informations.
+Cookieviz analyse les interactions entre un navigateur et des sites et serveurs distants. Vous pourrez savoir à quels autres acteurs le site que vous visitez envoie des informations.
 
 
 Utilisation
