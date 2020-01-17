@@ -2,7 +2,7 @@
   "main": "browser.html",
   "name": "CookieViz",
   "description": "CookieViz est outil de visualisation qui permet de mesurer l'impact des cookies lors de votre propre navigation.",
-  "version": "v2.0.0-beta.1",
+  "version": "2.0.0",
   "nodejs": true,
   "keywords": [
     "cookie",
