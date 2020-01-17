@@ -63,7 +63,7 @@ $("#cookie").click(function ($data_nodes, $data_links, $map_nodes_bis, $map_link
     location.href = "index.html";
 });
 $("#reset").click(function () {
-    reset_graph();
+    reset_graph(true);
 });
 $("#zoomin").click(function () {
     zoom_in();

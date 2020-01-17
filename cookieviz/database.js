@@ -19,12 +19,19 @@ function errorHandler(transaction, error) {
     throw error.message;
 }
 
-async function reset_graph()
-{
-    db.transaction(async function (tx) {
-        tx.executeSql("DELETE FROM url_referer",[], function (tx, results){
-            document.location.reload(true);
-        }
-        );
-    }, errorHandler);
+async function reset_graph(reload) {
+    return new Promise((resolve, reject) => {
+        db.transaction(async function (tx) {
+            tx.executeSql("DELETE FROM url_referer", [], function (tx, results) {
+                if (reload){
+                    document.location.reload(true);
+                }
+                resolve();
+            }
+            );
+        }, function(transaction, error){
+            errorHandler(transaction, error);
+            reject(error);
+        } );
+    });
 }

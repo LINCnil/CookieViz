@@ -2,7 +2,7 @@ var gui = require('nw.gui');
 var win = gui.Window.get();
 var fs = require('fs');
 
-const homepage = "https://linc.cnil.fr/fr/cookieviz-une-dataviz-en-temps-reel-du-tracking-de-votre-navigation"
+const homepage = "www.cnil.fr"
 var cookieviz_windows = [];
 
 window.addEventListener(
@@ -75,39 +75,48 @@ function closeCookieViz(){
     cookieviz_windows = [];
 }
 
-deleteFolderRecursive = function(path) {
-    var files = [];
-    if( fs.existsSync(path) ) {
-        files = fs.readdirSync(path);
-        files.forEach(function(file,index){
-            var curPath = path + "/" + file;
-            if(fs.lstatSync(curPath).isDirectory()) { // recurse
-                deleteFolderRecursive(curPath);
-            } else { // delete file
-                try{
-                    fs.unlinkSync(curPath);
-                } catch (error){
-                    console.log(error);
-                }  
-            }
+async function cleanCache() {
+    return new Promise((resolve, reject) => {
+        window.nw.App.clearCache();
+
+        // cause significantly increase of shutdown duration
+        window.chrome.browsingData.remove({
+            since: 0
+        }, {
+            appcache: true,
+            cache: true,
+            cookies: true,
+            downloads: true,
+            fileSystems: true,
+            formData: true,
+            history: true,
+            indexedDB: true,
+            localStorage: true,
+            pluginData: true,
+            passwords: true,
+            serverBoundCertificates: true,
+            serviceWorkers: true,
+            webSQL: true
+        }, function (){
+            resolve();
         });
-        try{
-            fs.rmdirSync(path);
-        }catch (error){
-            console.log(error);
-        }
-    }
-};
+    });
+}
 
 
 win.on('close', async function () {
-    this.hide(); // Pretend to be closed already
-    console.log("En cours de fermeture...");
-    closeCookieViz();
+    try {
+        this.hide(); // Pretend to be closed already
+        console.log("En cours de fermeture...");
+        closeCookieViz();
 
-    deleteFolderRecursive(require('nw.gui').App.dataPath);
-
-    this.close(true); // then close it forcefully
+        await reset_graph(false);
+        await cleanCache();
+        this.close(true); // then close it forcefully
+    } catch {
+        // Just in case something happened...
+        this.close(true); 
+    }
 });
 
 function navigate(e){
