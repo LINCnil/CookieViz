@@ -9,7 +9,7 @@ Cookieviz analyse les interactions entre un navigateur et des sites et serveurs 
 Utilisation
 --
 
-Assurez-vous d'avoir la plateforme logicielle [node.js](https://nodejs.org/fr/download/) et [git](https://git-scm.com/downloads) d'installer sur votre système.
+Assurez-vous d'avoir la plateforme logicielle [node.js](https://nodejs.org/fr/download/) et [git](https://git-scm.com/downloads) installés sur votre système.
 
 1. Depuis un terminal, récupérer le code de CookieViz : 
 
@@ -17,7 +17,7 @@ Assurez-vous d'avoir la plateforme logicielle [node.js](https://nodejs.org/fr/do
 	 
 2. Configurer et lancer CookieViz :
 
-     * ``npm install ``
+     * ``npm install``
 
      * ``npm run start``
 	 
