@@ -27,7 +27,7 @@ async function get_json(max_date, domain) {
                             for (var key_link in point.link) {
                                 const name_to_link = point.link[key_link];
                                 const point_to_link = map[name_to_link];
-                                if (point.id != point_to_link.id) {
+                                if (point_to_link && (point.id != point_to_link.id)) {
                                     if (cpt_unique_links == 0) {
                                         write_links.push({ source: point_to_link.url_domains, target: point.url_domains, value: group, cookie: point.is_cookie });
                                         cpt_unique_links = 1;
