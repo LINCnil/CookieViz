@@ -43,16 +43,16 @@ Make sure you have the software platform [node.js] (https://nodejs.org/en/downlo
 
 1. From a terminal, retrieve the CookieViz code:
 
-     * `` git clone https: // github.com / LINCnil / CookieViz``
+     * ``git clone https://github.com/LINCnil/CookieViz``
 
 2. Configure and launch CookieViz:
 
-     * `` npm install ``
+     * ``npm install``
 
-     * `` npm run start``
+     * ``npm run start``
 
 
-You can also generate CookieViz binaries for Windows, Mac and Linux platforms using the `` npm run dist '' command.
+You can also generate CookieViz binaries for Windows, Mac and Linux platforms using the ``npm run dist'' command.
 
 
 ## Contribute
