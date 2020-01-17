@@ -122,4 +122,4 @@ chrome.webRequest.onHeadersReceived.addListener(processRequest, {
 }, ['responseHeaders', 'extraHeaders']
 );
 
-setInterval(push_database, 1000);
+setInterval(push_database, 2000);

@@ -123,8 +123,6 @@ $("#chart").click(function ($domain, $max_date) {
 });
 graph = new draw_points("#chart", w, h);
 
-var pull = null;
-
 function pull_database(){
     get_json(max_date, domain).then(res => {
             data_nodes = [];
@@ -151,7 +149,7 @@ get_json(max_date, domain).then(res =>{
     cpt = load_nodes_bis(data_nodes, data_links, map_nodes_bis, map_links, graph, cpt);  
 });
 
-pull = setInterval(pull_database, delay);  
+setInterval(pull_database, delay);  
 
 window.onresize = function(){
     w = $("#chart").width();
