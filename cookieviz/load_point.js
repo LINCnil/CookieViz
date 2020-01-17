@@ -1,17 +1,17 @@
-const getFavicons = require('get-website-favicon')
-
 favicons ={};
 
+const getFavicons = require('get-website-favicon')
+var request = window.indexedDB.open("favicon", 3);
+
+
 async function getFavicon(domain){
-    const favicon = await getFavicons(domain);
-
-    if (favicon.icons.length > 0){
-        favicons[domain] = favicon.icons[0].src;
-    }else{
-        favicons[domain] = "icons/favicons.png";
-    }
+    favicons[domain] = "icons/favicons.png";
+    getFavicons(domain).then(data=>{
+        if (data.icons.length > 0){
+            favicons[domain] = data.icons[0].src;
+        }
+    });
 }
-
 
 async function get_map() {
     return new Promise((resolve, reject) => {
@@ -35,7 +35,7 @@ async function get_map() {
                                 
                                 if (!favicons[url_domains]){
                                     // Load favicon for the website
-                                    await getFavicon(url_domains);
+                                    getFavicon(url_domains);
                                 }
                                 
                             }

@@ -14,6 +14,10 @@
  You should have received a copy of the GNU General Public License
  along with CookieViz.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+ //Refreshing delay
+ const delay = 4000;
+
 var w = $("#chart").width(),
     h = $("#chart").height(),
     max_date = 0,
@@ -119,19 +123,21 @@ $("#chart").click(function ($domain, $max_date) {
 });
 graph = new draw_points("#chart", w, h);
 
-function update(){
+var pull = null;
+
+function pull_database(){
     get_json(max_date, domain).then(res => {
-        data_nodes = [];
-        data_links = [];
-        data_nodes = res.inf_nodes;
-        data_links = res.inf_links;
-        if (res.max_date != "") {
-            if (max_date != res.max_date) {
-                max_date = res.max_date;
+            data_nodes = [];
+            data_links = [];
+            data_nodes = res.inf_nodes;
+            data_links = res.inf_links;
+            if (res.max_date != "") {
+                if (max_date != res.max_date) {
+                    max_date = res.max_date;
+                }
             }
-        }
-        cpt = load_nodes_bis(data_nodes, data_links, map_nodes_bis, map_links, graph, cpt);
-    });
+            cpt = load_nodes_bis(data_nodes, data_links, map_nodes_bis, map_links, graph, cpt);
+  });   
 }
 
 get_json(max_date, domain).then(res =>{
@@ -142,10 +148,10 @@ get_json(max_date, domain).then(res =>{
             max_date = res.max_date;
         }
     }
-    cpt = load_nodes_bis(data_nodes, data_links, map_nodes_bis, map_links, graph, cpt);    
+    cpt = load_nodes_bis(data_nodes, data_links, map_nodes_bis, map_links, graph, cpt);  
 });
 
-setInterval(update, 4000); 
+pull = setInterval(pull_database, delay);  
 
 window.onresize = function(){
     w = $("#chart").width();

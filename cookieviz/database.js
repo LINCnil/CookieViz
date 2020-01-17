@@ -15,7 +15,8 @@ function errorHandler(transaction, error) {
         console.log( "error:" + transaction.message);
         return;
     }
-    console.log( "error:" + error.message)
+    console.log( "error:" + error.message);
+    throw error.message;
 }
 
 async function reset_graph()
