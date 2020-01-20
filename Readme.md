@@ -31,8 +31,6 @@ Ouvrez votre terminal/invite de commande à la racine du projet et entrer les li
  * ``docker build -t cookieviz``
  * ``docker run cookieviz``
 
-ou lancer la commande ``./run-docker`` à la racine de ce projet.
-
 **Utilisation sans docker sur Windows, Mac OS X et Linux**
 
 Pour déployer le logiciel sur Windows, Linux et sur MAC, vous devez disposer d'un serveur web, un serveur de base de données MySQL, et PHP5. Il sera nécessaire d'installer [mitmproxy](https://mitmproxy.org/).
