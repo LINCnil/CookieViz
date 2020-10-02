@@ -1,0 +1,46 @@
+
+  
+  text.tiny {
+    font-size: 10pt;
+  }
+  text.light {
+    fill: lightgrey
+  }
+  
+  .world {
+    stroke: lightgrey;
+        stroke-width: 4px;
+  }
+  
+  .cell {
+    stroke: white;
+    stroke-width: 1px;
+  }
+  
+  .label {
+    text-anchor: middle;
+    fill: white;
+  }
+  
+  .label>.name {
+    dominant-baseline: text-after-edge;
+  }
+  
+  .label>.value {
+    dominant-baseline: text-before-edge;
+  }
+  
+  .hoverer {
+    fill: transparent;
+    stroke: white;
+    stroke-width:0px;
+  }
+  
+  .hoverer:hover {
+    stroke-width: 3px;
+  }
+  
+  .legend-color {
+    stroke-width: 1px;
+    stroke:darkgrey;
+  }

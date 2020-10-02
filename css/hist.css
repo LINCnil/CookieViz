@@ -1,0 +1,18 @@
+.bar {
+    fill:#fb8761;
+  }
+  
+  .bar:hover {
+    fill: #b5367a;
+  }
+  
+
+  .bar:hover {
+    fill: #4f127b;
+  }
+
+  rect.zoom-panel {
+    cursor: move;
+    fill: #fff;
+    pointer-events: all;
+  }

@@ -1,0 +1,32 @@
+{
+	"browser": {
+		"SPLASH": "Découvrez la face cachée du Web!",
+		"navigation": {
+			"PREV_PAGE": "Page précédente",
+			"NEXT_PAGE": "Page suivante",
+			"REFRESH_PAGE": "Actualiser cette page"
+		},
+		"LANGUAGES": "Changer la langue",
+		"visualizations": {
+			"VIZ": "Ouvrir la fenêtre de visualisation"
+		},
+		"parameters": {
+			"TITLE": "Paramètres du navigateur",
+			"CLEAN_DATA": "Nettoyer les données",
+			"LOAD_VISIT_TXT": "Charger un chemin de visite depuis un fichier texte"
+		},
+		"visit": {
+			"HEAD_VISIT": "Définir un parcours de visite",
+			"START_VISIT": "Commencer la visite",
+			"REINIT_VISIT": "Réinitialiser la visite",
+			"PREVIOUS_VISIT": "Page précédente",
+			"NEXT_VISIT": "Page suivante",
+			"ADD_VISIT": "Ajouter la page",
+			"REMOVE_VISIT": "Enlever cette page",
+			"MINIMIZE_VISIT": "Réduire/maximiser la fenêtre",
+			"CLOSE_VISIT": "Fermer la fenêtre",
+			"EXPORT_VISIT": "Exporter la navigation vers un fichier texte",
+			"IMPORT_VISIT": "Importer la navigation depuis un fichier texte"
+		}
+	}
+}

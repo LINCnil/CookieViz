@@ -1,25 +1,122 @@
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" href="css/browser.css" />
-        <script src="js/browser.js"></script>
-        <script src="cookieviz/database.js"></script>
-        <script src="js/crawler.js"></script>
-    </head>
-    <body>
-        <header>
-            <button title="Page précédente" id='back'> &#x2190; </button>
-            <button title="Page suivante" id='forward'> &#x2192;</button>
-            <button title="Actualiser cette page" id='refresh'> &#8634; </button>
 
-            <input type="url" id='address' class='address'/>
-            <button title="Nouvelle fenêtre CookieViz" id='cookieviz'/> &oast; </button>
-        </header>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/browser.css" />
+    <script src="browser.config.js"></script>
+    <script type="module">
+        config.analyses.forEach(function (analysis) {
+            import("./analyses/" + analysis + ".mjs").then(module => {
+                initAnalysis(module.plugins());
+            });
+        });
+    </script>
 
-        <div id='splash' class='splash'>
-            Découvrez la face cachée du Web!
-        </div>
+</head>
 
-        <iframe id='browser' src='about:blank' nwfaketop nwdisable/>
-    </body>
+<body ng-app="translate">
+    <nav id="navigation-bar">
+        <div id="nav-wrapper">
+
+            <div id="nav-controls" class="nav-elements">
+                <button title="{{'browser.navigation.PREV_PAGE' | translate}}" id='back'
+                    class="fas fa-arrow-left nav-btn"></button>
+                <button title="{{'browser.navigation.NEXT_PAGE' | translate}}" id='forward'
+                    class="fas fa-arrow-right nav-btn"></button>
+                <button title="{{'browser.navigation.REFRESH_PAGE' | translate}}" id='refresh'
+                    class="fas fa-redo nav-btn"></button>
+            </div>
+
+            <div id="url-bar" class="nav-elements">
+                <input type="url" id='address' class='address' />
+            </div>
+
+            <div id="features" class="nav-elements">
+                <button title="{{'browser.visualizations.VIZ' | translate}}" id="viz"
+                class="fa fa-eye nav-btn dropbtn"></button>
+                <div class="dropdown" ng-controller="Ctrl">
+                    <button title="{{'browser.LANGUAGES' | translate}}" id="language"
+                        class="fas fa-globe-africa nav-btn dropbtn"></button>
+                    <div id="dropdown-language" class="dropdown-content">
+                        <div class="link-list" id="language-menus">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button title="{{'browser.parameters.TITLE' | translate}}" id="settings"
+                        class="fas fa-cog nav-btn dropbtn"></button>
+                    <div id="dropdown-settings" class="dropdown-content">
+                        <div class="link-list" id="parameter-menus">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+    </nav>
+
+    <nav id="visit-bar" class="visit">
+        <div id="nav-wrapper">
+            <div class="nav-elements" style="margin:10">
+                <button title="{{'browser.visit.START_VISIT' | translate}}" id='visit-play-pause'
+                    class="fas fa-play nav-btn"></button>
+                <button title="{{'browser.visit.REINIT_VISIT' | translate}}" id='visit-init'
+                    class="fas fa-redo nav-btn"></button>
+                <button title="{{'browser.visit.PREVIOUS_VISIT' | translate}}" id='visit-prev'
+                    class="fas fa-arrow-left nav-btn"></button>
+                <button title="{{'browser.visit.NEXT_VISIT' | translate}}" id='visit-next'
+                    class="fas fa-arrow-right nav-btn"></button>
+            </div>
+            <div class="nav-elements">
+                <button title="{{'browser.visit.MINIMIZE_VISIT' | translate}}" id='visit-reduce'
+                    class="fas fa-window-minimize nav-btn" style="margin: 0 0px 0 0;"></button>
+                <button title="{{'browser.visit.CLOSE_VISIT' | translate}}" id='visit-close'
+                    class="fas fa-times nav-btn" style="margin: 0 0px 0 0;"></button>
+            </div>
+            <div>
+                <div name="visitList" id="list-wrapper">
+                    <select size="3" class='visit' id="visit-list">
+                    </select>
+                </div>
+                <div class="nav-elements"  style="margin:20">
+                    <button title="{{'browser.visit.ADD_VISIT' | translate}}" id='visit-add'
+                        class="fas fa-plus nav-btn"></button>
+                    <button title="{{'browser.visit.REMOVE_VISIT' | translate}}" id='visit-remove'
+                        class="fas fa-minus nav-btn"></button>
+                </div>
+                <div class="nav-elements">
+                    <button title="{{'browser.visit.IMPORT_VISIT' | translate}}" id='visit-import'
+                        class="fas fa-file-import nav-btn"></button>
+                    <button title="{{'browser.visit.EXPORT_VISIT' | translate}}" id='visit-export'
+                        class="fas fa-file-export nav-btn"></button>
+                </div>
+    </nav>
+
+    <!–– Dependencies ––>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-cookies.min.js"></script>
+    <script src="js/angular-translate.min.js"></script>
+    <script src="js/angular-translate-storage-cookie.min.js"></script>
+    <script src="js/angular-translate-storage-local.min.js"></script>
+    <script src="js/angular-translate-loader-static-files.min.js"></script>
+
+    <!–– Core interfaces ––>
+    <script src="core/error.js"></script>
+    <script src="core/browser.js"></script>
+    <script src="core/dropdown.js"></script>
+    <script src="core/language.js"></script>
+    <script src="core/database.js"></script>
+    <script src="core/plugins.js"></script>
+    <script src="core/visit.js"></script>
+    <!-- TODO : <script src="core/bookmarks.js"></script>-->
+
+    <!–– Browser parameters ––>
+        <script src="parameters/clean_data.js"></script>
+        <script src="parameters/visit_path.js"></script>
+
+        <!-- <div id="plugins_button" style="display:inline;" class="nav-button"></div> -->
+        <iframe id='browser' src='about:blank' nwfaketop nwdisable />
+</body>
+
 </html>

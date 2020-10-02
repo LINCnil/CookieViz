@@ -1,0 +1,31 @@
+{
+	"browser": {
+		"navigation":{
+			"PREV_PAGE": "Previous page",
+			"NEXT_PAGE": "Next page",
+			"REFRESH_PAGE": "Refresh page"
+		},
+		"LANGUAGES":"Set language",
+		"visualizations":{
+			"VIZ" : "Open viz"
+		},
+		"parameters":{
+			"TITLE" : "Parameters",
+			"CLEAN_DATA": "Clean data",
+			"LOAD_VISIT_TXT": "Load a visit path from a text file"
+		},		
+		"visit":{
+			"HEAD_VISIT":"Define a visit path",
+			"START_VISIT" : "Start visit",
+			"REINIT_VISIT": "Reinitialize visit",
+			"PREVIOUS_VISIT": "Previous page",
+			"NEXT_VISIT":"Next page",
+			"ADD_VISIT":"Add page",
+			"REMOVE_VISIT":"Remove page",
+			"MINIMIZE_VISIT":"Minimize/maximize visit",
+			"CLOSE_VISIT":"Close visit",
+			"EXPORT_VISIT" : "Export visit to text file",
+			"IMPORT_VISIT" : "Import visit from text file"
+		}
+	}
+}

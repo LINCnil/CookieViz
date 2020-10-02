@@ -3,3 +3,5 @@
 /launch.bat
 /launch.sh
 /package.sh
+.DS_Store
+.vscode/launch.json

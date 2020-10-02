@@ -32,7 +32,10 @@
     "url": "https://github.com/LINCnil/CookieViz/issues"
   },
   "dependencies": {
+    "ads.txt": "^0.4.0",
     "get-website-favicon": "0.0.7",
+    "iso-639-1": "^2.1.1",
+    "jszip": "^3.5.0",
     "psl": "^1.4.0"
   },
   "devDependencies": {
