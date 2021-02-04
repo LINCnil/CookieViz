@@ -26,7 +26,16 @@
 			"MINIMIZE_VISIT": "Réduire/maximiser la fenêtre",
 			"CLOSE_VISIT": "Fermer la fenêtre",
 			"EXPORT_VISIT": "Exporter la navigation vers un fichier texte",
-			"IMPORT_VISIT": "Importer la navigation depuis un fichier texte"
+			"IMPORT_VISIT": "Importer la navigation depuis un fichier texte",
+			"DOWNLOAD_VISIT" : "Télécharger la navigation depuis Internet",
+			"alexa":{
+				"HEAD_ALEXA":"Charger la visite depuis le Alexa Top Site",
+				"VISIT_SHOW":"Afficher la bar de visite",
+				"API_KEY" : "Clef API amazon",
+				"LIST_SIZE" : "Nombre de sites à charger",
+				"COUNTRY_CODE" : "Code pays",
+				"STORE_VISIT" : "Récupérer la liste Alexa"
+			}
 		}
 	}
 }

@@ -25,7 +25,16 @@
 			"MINIMIZE_VISIT":"Minimize/maximize visit",
 			"CLOSE_VISIT":"Close visit",
 			"EXPORT_VISIT" : "Export visit to text file",
-			"IMPORT_VISIT" : "Import visit from text file"
+			"IMPORT_VISIT" : "Import visit from text file",
+			"DOWNLOAD_VISIT" : "Download visit list from Internet",
+			"alexa":{
+				"HEAD_ALEXA":"Load a visit from Alexa Top Site",
+				"VISIT_SHOW":"Show visit bar",
+				"API_KEY" : "Api key",
+				"LIST_SIZE" : "Number of website to retrieve",
+				"COUNTRY_CODE" : "Country Code",
+				"STORE_VISIT" : "Get Alexa list"
+			}
 		}
 	}
 }

@@ -74,6 +74,7 @@ function getHostName(full_url){
 }
 
 function extractCookies(cookies) {
+    if(!cookies) return {};
     return cookies.split(/; */).reduce((obj, str) => {
         if (str === "") return obj;
         const eq = str.indexOf('=');
@@ -341,7 +342,7 @@ const requests = {
     delete: deleteRequestsCrawler,
     clean: cleanRequestsTable,
     data: {
-        "link_requests":  getFromQuery.bind(null, 'request_table', ['request_baseurl', 'root_initiator_url'], "request_baseurl != root_initiator_baseurl", ['root_initiator_url', 'request_baseurl'], null, linkByInitiatorAndRequest),
+        "link_requests":  getFromQuery.bind(null, 'request_table', ['request_baseurl', 'root_initiator_url', 'cookie'], "request_baseurl != root_initiator_baseurl", ['root_initiator_url', 'request_baseurl', 'cookie'], null, linkByInitiatorAndRequest),
         "nodes_requests":  getFromQuery.bind(null, 'request_table', ['request_baseurl', 'root_initiator_baseurl', 'root_initiator_url'], "request_baseurl != root_initiator_baseurl  and `root_initiator_baseurl` IS NOT NULL", ['root_initiator_url', 'request_baseurl'], null, nodeByRequest),
         "nodes_requests_with_cookies":  getFromQuery.bind(null, 'request_table', ['request_baseurl', 'root_initiator_url'], "request_baseurl != root_initiator_baseurl  and `cookie` IS NOT NULL", ['root_initiator_url', 'request_baseurl'], null, nodeByRequest),
         "link_requests_with_cookies":  getFromQuery.bind(null, 'request_table', ['request_baseurl', 'root_initiator_url', 'cookie'], "request_baseurl != root_initiator_baseurl and `cookie` IS NOT NULL and `root_initiator_baseurl` IS NOT NULL", ['root_initiator_url', 'request_baseurl', 'cookie'], null, linkByInitiatorAndRequest),

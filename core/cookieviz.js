@@ -3,8 +3,7 @@ var nb_visited = 0;
 var nb_visited_with_cookie = 0;
 var nb_third = 0;
 var most_third = [0, 0];
-var middle_third = [0, 0];
-var low_third = [0, 0];
+var rest_third = [0, 0];
 
 window.addEventListener(
     'DOMContentLoaded',
@@ -56,8 +55,7 @@ function getDistrib(links) {
         range_max = distrib[threshold_max].value;
 
     most_third = [Math.max(...distrib.map(x => x.value)), range_min];
-    middle_third = [range_min, range_max];
-    low_third = [range_max, Math.min(...distrib.map(x => x.value))];
+    rest_third = [0, range_min];
 
     return distrib;
 }
@@ -202,7 +200,6 @@ app.controller('cookieVizCtrl', function ($scope, $interval) {
         $scope.nb_third = nb_third;
         $scope.nb_visited_with_cookie = nb_visited_with_cookie;
         $scope.most_third = most_third;
-        $scope.middle_third = middle_third;
-        $scope.low_third = low_third;
+        $scope.rest_third = rest_third;
     }, 500);
 });

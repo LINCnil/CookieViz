@@ -1,5 +1,88 @@
 var visit_timeout = null;
+const apiHost = 'ats.api.alexa.com';
 
+const alexa_db = openDatabase(
+    'ATS',
+    '1.0',
+    'Storage of Alexa Top Sites',
+    2 * 1024 * 1024
+);
+
+
+alexa_db.transaction(async function (tx) {
+    let query_str = 'CREATE TABLE IF NOT EXISTS ats_list (DataUrl TEXT, Country INTEGER, Global INTEGER, ReachPerMillion INTEGER, PageViewsPerMillion INTEGER, PageViewsPerUser DOUBLE)';
+    tx.executeSql(query_str);
+}, errorHandler);
+
+async function checkUrls(sites) {
+    const prefixs = ["https://www.", "https://", "http://www.", "http://"];
+    const ok_urls = [];
+    for (const site of sites) {
+        for (const prefix of prefixs) {
+            const url = prefix + site.DataUrl;
+            try {
+                const response = await fetch(url);
+                ok_urls.push(url);
+                break;
+            } catch (error) {
+                continue;
+            }
+        }
+    }
+
+    openVisit(ok_urls);
+}
+
+async function parseATSResponse(sites) {
+    alexa_db.transaction(async function (tx) {
+        if (typeof sites[Symbol.iterator] !== 'function') sites = [sites]; // In case there is a single result
+
+
+        for (const site of sites) {
+            const DataUrl = site.DataUrl;
+            const Country = site.Country.Rank;
+            const Global = site.Global.Rank;
+            const ReachPerMillion = site.Country.Reach.PerMillion;
+            const PageViewsPerMillion = site.Country.PageViews.PerMillion;
+            const PageViewsPerUser = site.Country.PageViews.PerUser;
+            const query_str = 'INSERT INTO ats_list (DataUrl, Country, Global, ReachPerMillion, PageViewsPerMillion, PageViewsPerUser) VALUES (?,?,?,?,?,?)';
+
+            tx.executeSql(query_str, [DataUrl, Country, Global, ReachPerMillion, PageViewsPerMillion, PageViewsPerUser]);
+        }
+    }, errorHandler);
+
+    await checkUrls(sites);
+}
+
+async function callATS(apikey, country, count) {
+    const list_interval = 10;
+    const error_div = document.getElementById("alexa_response");
+    var i = 1;
+    error_div.innerHTML = "0%";
+    while (i < count + 1) {
+        const start = i;
+        const count_frame = i + list_interval < count + 1 ? list_interval : count - i + 1;
+
+        var uri = '/api?Action=TopSites&Count=' + count_frame + '&CountryCode=' + country + '&ResponseGroup=Country&Output=json&Start=' + start;
+
+        var opts = {
+            json: true,
+            headers: { 'x-api-key': apikey },
+            resolveWithFullResponse: true
+        }
+
+        const response = await fetch('https://' + apiHost + uri, opts);
+        const json = await response.json();
+        if (json.Ats.Results.ResponseStatus.StatusCode != "200") {
+            error_div.innerHTML = 'failed:' + e;
+            throw data.Ats.Results.Result.Alexa.Request.Errors.Error.ErrorCode
+        }
+        await parseATSResponse(json.Ats.Results.Result.Alexa.TopSites.Country.Sites.Site);
+        i += list_interval;
+        error_div.innerHTML = Math.round(100 * i / count).toString() + "%";
+    }
+    error_div.innerHTML = "OK";
+}
 
 function load_visit_txt(ffile) {
     // List of website to visit
@@ -66,10 +149,17 @@ function openVisit(visit_list) {
     window.nwjsDialogOpenVisit = file_dialog_visit;
 
     //Setup load txt trigger
+    window.alexaModal = document.getElementById('visit_modal');
     file_dialog_visit.addEventListener("change", function (evt) {
         load_visit_txt(this.value);
         this.value = "";
     }, false);
+
+    window.alexaForm = document.getElementById("alexa_form");
+    window.alexaForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        callATS(event.target.api_key.value, event.target.country_select.value, parseInt(event.target.alexa_list_size.value));
+    });
 };
 
 function next_visit() {
@@ -145,6 +235,10 @@ function navigate_visit(e) {
             a.click();
             window.URL.revokeObjectURL(export_url);
             break;
+        case 'visit-download':
+            // Show download modal
+            const modal = document.getElementById("visit_modal");
+            modal.style.display = "block";
         case 'visit-prev':
             if (window.nwjsVisitList.selectedIndex > 0) {
                 window.nwjsVisitList.selectedIndex--;

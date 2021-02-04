@@ -1,0 +1,616 @@
+{
+    "doubleclick.net": {
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://policies.google.com/technologies/types?hl=fr"
+    },
+    "google.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://policies.google.com/technologies/types?hl=fr"
+    },
+    "1rx.io":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.rhythmone.com/privacy-policy/"
+    },
+    "sabavision.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.sabavision.com/fa/target"
+    },
+    "facebook.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.facebook.com/policies/cookies/"
+    },
+    "amazon-adsystem.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.amazon.com/gp/help/customer/display.html/?nodeId=201890250"
+    },
+    "rubiconproject.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://rubiconproject.com/privacy-policy"
+    },
+    "pubmatic.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://pubmatic.com/legal/platform-cookie-policy"
+    },
+    "outbrain.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.outbrain.com/legal/privacy#cookies"
+    },
+    "criteo.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.criteo.com/privacy/"
+    },
+    "smartadserver.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://smartadserver.fr/politique-confidentialite-client-final/"
+    },
+    "taboola.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.taboola.com/fr/cookie-policy"
+    },
+    "yahoo.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://policies.yahoo.com/xa/en/yahoo/privacy/topics/cookies/index.htm"
+    },
+    "bidswitch.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.bidswitch.com/cookie-statement"
+    },
+    "advertising.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://privacy.aol.com/legacy/cookies-web-beacons/index.html"
+    },
+    "360yield.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.360yieldcenter.com/privacy-policy/"
+    },
+    "teads.tv":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.teads.com/privacy-policy/"
+    },
+    "media.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.media.net/privacy-policy/"
+    },
+    "lijit.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.sovrn.com/about-our-cookies/"
+    },
+    "sharethrough.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://platform-cdn.sharethrough.com/privacy-policy"
+    },
+    "spotxchange.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.spotx.tv/privacy-policy/"
+    },
+    "dailymotion.com":{
+        "purpose": [
+        ],
+        "privacy":"https://www.dailymotion.com/legal/privacy"
+    },
+    "emxdgt.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://emxdigital.com/privacy/"
+    },
+    "adotmob.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://we-are-adot.com/privacy-policy/"
+    },
+    "google.fr":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://policies.google.com/technologies/types?hl=fr"
+    },
+    "adnxs.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.xandr.com//privacy/cookie-policy/"
+    },
+    "twitter.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://help.twitter.com/fr/rules-and-policies/twitter-cookies"
+    },
+    "xiti.com":{
+        "purpose": [
+        ],
+        "privacy":"https://developers.atinternet-solutions.com/javascript-fr/bien-commencer-javascript-fr/cookies-at-internet-javascript-fr/"
+    },
+    "scorecardresearch.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.scorecardresearch.com/privacy.aspx"
+    },
+    "openx.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.openx.com/legal/privacy-policy/"
+    },
+    "consensu.org":{
+        "purpose": [
+        ],
+        "privacy":"https://www.consensus.com/privacy-policy/"
+    },
+    "consentframework.com":{
+        "purpose": [
+        ],
+        "privacy":"https://iabeurope.eu/transparency-consent-framework/"
+    },
+    "rlcdn.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://liveramp.com/privacy/service-privacy-policy/"
+    },
+    "tavoos.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://tavoos.net/about"
+    },
+    "bing.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://privacy.microsoft.com/fr-fr/privacystatement"
+    },
+    "adsrvr.org":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.thetradedesk.com/general/privacy"
+    },
+    "casalemedia.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://casalemedia.com/"
+    },
+    "youtube.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://policies.google.com/technologies/types?hl=fr"
+    },
+    "adition.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.adition.com/datenschutz"
+    },
+    "nr-data.net":{
+        "purpose": [
+        ],
+        "privacy":"https://newrelic.com/termsandconditions/cookie-policy/cookie-table"
+    },
+    "adform.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://site.adform.com/privacy-center/adform-cookies/"
+    },
+    "agkn.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.home.neustar/privacy/privacy-policy#websitecookies"
+    },
+    "demdex.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://docs.adobe.com/content/help/fr-FR/core-services/interface/ec-cookies/cookies-am.html"
+    },
+    "yandex.ru":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://yandex.com/legal/confidential/"
+    },
+    "everesttech.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://docs.adobe.com/content/help/en/core-services/interface/ec-cookies/cookies-advertising-cloud.html"
+    },
+    "quantserve.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.quantcast.com/privacy/"
+    },
+    "twimg.com":{
+        "purpose": [
+        ],
+        "privacy":"https://help.twitter.com/fr/rules-and-policies/twitter-cookies"
+    },
+    "commander1.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://community.commandersact.com/platform/knowledge-base/cookies"
+    },
+    "acpm.fr":{
+        "purpose": [
+        ],
+        "privacy":"https://www.acpm.fr/Politique-Cookies"
+    },
+    "addthis.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.oracle.com/legal/privacy/addthis-privacy-policy.html"
+    },
+    "estat.com":{
+        "purpose": [
+        ],
+        "privacy":"https://www.mediametrie.fr/fr/gestion-des-cookies"
+    },
+    "3lift.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://triplelift.com/privacy/"
+    },
+    "id5-sync.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.id5.io/privacy-policy"
+    },
+    "bluekai.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.oracle.com/legal/privacy/marketing-cloud-data-cloud-privacy-policy.html"
+    },
+    "linkedin.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.linkedin.com/legal/l/cookie-table"
+    },
+    "mathtag.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.mediamath.com/fr/politique-de-confidentialite/"
+    },
+    "yadro.ru":{
+        "purpose": [
+        ],
+        "privacy":"https://yadro.ru"
+    },
+    "omtrdc.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://docs.adobe.com/content/help/en/core-services/interface/ec-cookies/cookies-analytics.html"
+    },
+    "omnitagjs.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.similarweb.com/corp/legal/privacy-policy/"
+    },
+    "4dex.io":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://adagio.io/privacy"
+    },
+    "smaato.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.smaato.com/applicant-privacy-policy/"
+    },
+    "exelator.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.nielsen.com/us/en/legal/privacy-statement/exelate-privacy-policy/services-privacy-policy-fr/"
+    },
+    "tapad.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.tapad.com/eu-privacy-policy"
+    },
+    "weborama.fr":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://weborama.com/respect-de-la-vie-privee-2-2/"
+    },
+    "crwdcntrl.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.lotame.com/about-lotame/privacy/lotames-products-services-privacy-policy/"
+    },
+    "turn.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.amobee.com/trust/privacy-guidelines/#cookies"
+    },
+    "stickyadstv.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.freewheel.com/privacy-policy-fr"
+    },
+    "mookie1.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"http://www.themig.com/en-uk/privacy.html"
+    },
+    "dotomi.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.conversantmedia.com/legal/privacy"
+    },
+    "zemanta.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.zemanta.com/legal/privacy/"
+    },
+    "zeotap.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://zeotap.com/wp-content/uploads/2019/07/FR_zeotap-Products-and-Services-Privacy-Policy.pdf"
+    },
+    "adscale.de":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.adscale.com/privacy-policy/"
+    },
+    "najva.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.najva.com/about-us/"
+    },
+    "pinterest.com":{
+        "purpose": [
+        ],
+        "privacy":"https://policy.pinterest.com/fr/privacy-policy"
+    },
+    "mail.ru":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://help.mail.ru/legal/terms/agent/eng/cookiepolicy"
+    },
+    "serving-sys.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.sizmek.com/privacy-policy/"
+    },
+    "krxd.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.salesforce.com/fr/company/privacy/full_privacy/"
+    },
+    "sc-static.net":{
+        "purpose": [
+        ]
+    },
+    "snapchat.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.snap.com/fr-FR/privacy/cookie-information"
+    },
+    "yektanet.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://my.yektanet.com/"
+    },
+    "imrworldwide.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://priv-policy.imrworldwide.com/priv/browser/us/en/optout.html"
+    },
+    "appconsent.io":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://appconsent.io/en/privacy-policy"
+    },
+    "education.gouv.fr":{
+        "purpose": [
+        ],
+        "privacy":"https://data.education.gouv.fr/terms/cookies-information/"
+    },
+    "iadvize.com":{
+        "purpose": [
+        ],
+        "privacy":"https://privacy.iadvize.com/fr/userdata#collected-data"
+    },
+    "vk.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://vk.com/privacy?eu=1"
+    },
+    "dmxleo.com":{
+        "purpose": [
+        ]
+    },
+    "w55c.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://docs.roku.com/published/userprivacypolicy/fr/fr"
+    },
+    "bidr.io":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.beeswax.com/privacy/"
+    },
+    "abtasty.com":{
+        "purpose": [
+        ],
+        "privacy":"https://www.abtasty.com/fr/mentions-legales/"
+    },
+    "easydmp.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.squadata.net/private-policy/"
+    },
+    "adskeeper.co.uk":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.adskeeper.co.uk/privacy-policy"
+    },
+    "creativecdn.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.rtbhouse.com/privacy-center/services-privacy-policy/"
+    },
+    "remarketingpixel.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://remarketingpixel.com/"
+    },
+    "tns-counter.ru":{
+        "purpose": [
+        ],
+        "privacy":"http://tns-counter.ru/policy.html"
+    },
+    "poool.fr":{
+        "purpose": [
+        ],
+        "privacy":"https://poool.fr/privacy-policy"
+    },
+    "eyeota.net":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.eyeota.com/eyeota-privacy-policy"
+    },
+    "mediarithmics.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.mediarithmics.com/fr-fr/content/charte-de-protection-des-donnees-personnelles"
+    },
+    "leadplace.fr":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://temelio.com/vie-privee"
+    },
+    "liadm.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://www.liveintent.com/services-privacy-policy/"
+    },
+    "tradelab.fr":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://tradelab.com/en/privacy/"
+    },
+    "zebestof.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://zbo.media/mentions-legales/politique-de-confidentialite-site-web/"
+    },
+    "yandex.com":{
+        "purpose": [
+        ],
+        "privacy":"https://yandex.com/support/metrica/general/cookie-usage.html"
+    },
+    "googlesyndication.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://policies.google.com/technologies/types?hl=fr"
+    },
+    "contextweb.com":{
+        "purpose": [
+            "ads"
+        ],
+        "privacy":"https://pulsepoint.com/legal/cookie-policy"
+    },
+    "cloudflare.com":{
+        "purpose": [
+        ],
+        "privacy":"https://support.cloudflare.com/hc/en-us/articles/200170156-Understanding-the-Cloudflare-Cookies"
+   },
+   "adobedtm.com":{
+    "purpose": [
+    ],
+    "privacy":"https://helpx.adobe.com/fr/dtm/kb/what-cookies-are-set-by-dtm.html"
+    }
+}

@@ -90,8 +90,37 @@
                         class="fas fa-file-import nav-btn"></button>
                     <button title="{{'browser.visit.EXPORT_VISIT' | translate}}" id='visit-export'
                         class="fas fa-file-export nav-btn"></button>
+                    <button title="{{'browser.visit.DOWNLOAD_VISIT' | translate}}" id='visit-download'
+                        class="fas fa-download nav-btn"></button>
                 </div>
     </nav>
+
+    <div id="visit_modal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="window.alexaModal.style.display = 'none';">&times;</span>
+            <h1>{{'browser.visit.alexa.HEAD_ALEXA' | translate}}</h1> <br><br>
+            <form id="alexa_form">
+                {{'browser.visit.alexa.API_KEY' | translate}} : <input type="text" id="api_key" value="">
+                <br><br>
+                <label>{{'browser.visit.alexa.LIST_SIZE' | translate}} : <input type="text" value="1000"
+                        id="alexa_list_size"></label> <br><br>
+                <label for="country_select"> {{'browser.visit.alexa.COUNTRY_CODE' | translate}} : </label>
+                <select id="country_select">
+                    <option value="FR">FR</option>
+                    <option value="EN">EN</option>
+                </select>
+                <br><br>
+                <input type="submit" value="{{'browser.visit.alexa.STORE_VISIT' | translate}}">
+                <div id="alexa_response">
+
+                </div>
+            </form>
+            <br><br>
+        </div>
+
+    </div>
 
     <!–– Dependencies ––>
     <script src="js/angular.min.js"></script>
@@ -114,7 +143,6 @@
     <!–– Browser parameters ––>
         <script src="parameters/clean_data.js"></script>
         <script src="parameters/visit_path.js"></script>
-
         <!-- <div id="plugins_button" style="display:inline;" class="nav-button"></div> -->
         <iframe id='browser' src='about:blank' nwfaketop nwdisable />
 </body>

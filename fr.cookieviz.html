@@ -28,6 +28,10 @@
         <span>Voir les cookies</span> <br>
         <span>de sa navigation</span>
       </div>
+      <div style="float:right;">
+        <button title="Exporter les données d'analyse" id='export'  onclick="export_data_analysis()"
+          class="fas fa-arrow-right nav-btn"></button>
+      </div>
     </div>
   </nav>
 
@@ -83,14 +87,11 @@
           <span style="font-size:14px;color:#5D5D6C">Lors de votre visite d’un site, des tiers peuvent déposer des
             cookies pour, entre autre, faire du suivi de navigation.</span>
           <span style="font-size:14px;color:#5D5D6C;">Entre <span style="color:#fb8761">{{most_third[0]}} et
-              {{most_third[1]}} tiers</span> sont
-            présents sur 20% des sites que vous avez visités.</span>
-          <span style="font-size:14px;color:#5D5D6C;">Entre <span style="color:#b5367a"> {{middle_third[0]}} et
-              {{middle_third[1]}} tiers</span> sont
-            présents sur 60% des sites.</span>
-          <span style="font-size:14px;color:#5D5D6C;">Entre <span style="color:#4f127b">{{low_third[0]}} et
-              {{low_third[1]}} tiers</span> sont
-            présents sur 20% des sites.</span>
+              {{most_third[1]}} tiers</span> déposent des cookies
+            sur 20% des sites visités.</span>
+          <span style="font-size:14px;color:#5D5D6C;">Entre <span style="color:#b5367a"> {{rest_third[0]}} et
+              {{rest_third[1]}} tiers</span> déposent des cookies
+            sur 80% des sites visites.</span>
         </div>
         <div id="hist" class="row"></div>
         <div class="row justify-content-md-center" style="margin-top: 30px;">
@@ -105,10 +106,11 @@
       <div class="col-md-4" id="voronoi_div" style="display:none;">
         <div class="row">
           <span style="font-weight: bold;font-size:18px;color:#282E42">Usage des cookies</span>
-          <span style="font-size:14px;color:#5D5D6C">La <span style="color:#fb8761;">zone orange</span> indique la couverture de tiers 
-          déclarés comme explicitement publicitaires dans des fichiers ads.tx ayant déposé des cookies parmi les sites visités.</span>
-            <span style="font-size:14px;color:#5D5D6C">La <span style="color:#b5367a;">zone violette</span> indique la couverture des tiers ayant déposé des cookies 
-            dont la finalité n’est pas explicitement indiqué comme publicitaire dans des fichiers ads.txt.</span>
+          <span style="font-size:14px;color:#5D5D6C">La <span style="color:#fb8761;">zone orange</span> indique la
+            couverture de tiers
+            déclarés comme publicitaires dans les fichiers ads.txt des sites visités.</span>
+          <span style="font-size:14px;color:#5D5D6C">La <span style="color:#b5367a;">zone violette</span> indique la
+            couverture des tiers non déclarés dans les fichiers ads.txt des sites visités.</span>
         </div>
         <div id="treemap" class="row"></div>
         <div class="row justify-content-md-center" style="margin-top: 30px;">
@@ -141,6 +143,7 @@
   <script src="visualization/hist.js"></script>
   <script src="visualization/voronoi.js"></script>
   <script src="visualization/search.js"></script>
+  <script src="visualization/export.js"></script>
 </body>
 
 </html>

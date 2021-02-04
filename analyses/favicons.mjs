@@ -5,6 +5,8 @@ var favicons ={};
 function extractHostname(url, keep_protocol) {
     let hostname;
 
+    if (!url) return "";
+    
     //find & remove protocol (http, ftp, etc.) and get hostname
     if (url.indexOf("//") > -1) {
         hostname = url.split('/')[2];

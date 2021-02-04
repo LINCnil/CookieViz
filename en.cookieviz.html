@@ -28,6 +28,10 @@
         <span>View cookies</span> <br>
         <span>of your navigation</span>
       </div>
+      <div style="float:right;">
+        <button title="Export data analysis" id='export' onclick="export_data_analysis()"
+          class="fas fa-arrow-right nav-btn"></button>
+      </div>
     </div>
   </nav>
 
@@ -79,9 +83,8 @@
           <span style="font-weight: bold;font-size:18px;color:#282E42">Presence of third parties on websites</span>
           <span style="font-size:14px;color:#5D5D6C">During your navigation, third parties may deposit cookies to, among other things, track navigation.
           </span>
-          <span style="font-size:14px;color:#5D5D6C;">Between <span style="color:#fb8761">{{most_third[0]}} and {{most_third[1]}} third parties</span> are present on 20% of websites.</span>
-          <span style="font-size:14px;color:#5D5D6C;">Between <span style="color:#b5367a"> {{middle_third[0]}} and {{middle_third[1]}} third parties</span> are present on 60% of websites.</span>
-          <span style="font-size:14px;color:#5D5D6C;">Between <span style="color:#4f127b">{{low_third[0]}} and {{low_third[1]}} third parties</span> are present on 20% of websites.</span>
+          <span style="font-size:14px;color:#5D5D6C;">Between <span style="color:#fb8761">{{most_third[0]}} and {{most_third[1]}} third parties</span> store cookies on 20% of visited websites.</span>
+          <span style="font-size:14px;color:#5D5D6C;">Between <span style="color:#b5367a"> {{rest_third[0]}} and {{rest_third[1]}} third parties</span> store cookies on 80% of visited websites.</span>
         </div>
         <div id="hist" class="row"></div>
         <div class="row justify-content-md-center" style="margin-top: 30px;">
@@ -131,6 +134,7 @@
   <script src="visualization/hist.js"></script>
   <script src="visualization/voronoi.js"></script>
   <script src="visualization/search.js"></script>
+  <script src="visualization/export.js"></script>
 </body>
 
 </html>
