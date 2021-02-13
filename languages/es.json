@@ -1,0 +1,40 @@
+{
+	"browser": {
+		"navigation":{
+			"PREV_PAGE": "Página anterior",
+			"NEXT_PAGE": "Página siguiente",
+			"REFRESH_PAGE": "Recargar página"
+		},
+		"LANGUAGES":"Idiomas",
+		"visualizations":{
+			"VIZ" : "Abrir viz"
+		},
+		"parameters":{
+			"TITLE" : "Parámetros",
+			"CLEAN_DATA": "Limpiar datos",
+			"LOAD_VISIT_TXT": "Cargar lista de visitas de fichero de texto"
+		},
+		"visit":{
+			"HEAD_VISIT":"Definir lista de visitas",
+			"START_VISIT" : "Iniciar visitas",
+			"REINIT_VISIT": "Reiniciar visitas",
+			"PREVIOUS_VISIT": "Página anterior",
+			"NEXT_VISIT":"Página siguiente",
+			"ADD_VISIT":"Añadir página",
+			"REMOVE_VISIT":"Eliminar página",
+			"MINIMIZE_VISIT":"Minimizar/maximizar visita",
+			"CLOSE_VISIT":"Cerrar visita",
+			"EXPORT_VISIT" : "Exportar lista a fichero de texto",
+			"IMPORT_VISIT" : "Importar lista de fichero de texto",
+			"DOWNLOAD_VISIT" : "Descargar lista de sitios web de internet",
+			"alexa":{
+				"HEAD_ALEXA":"Cargar una lista de sitios web Alexa Top Sites",
+				"VISIT_SHOW":"Mostrar barra de visitas",
+				"API_KEY" : "Api key",
+				"LIST_SIZE" : "Número de sitios web a obtener",
+				"COUNTRY_CODE" : "Código de país",
+				"STORE_VISIT" : "Descargar lista de Alexa"
+			}
+		}
+	}
+}

@@ -9,6 +9,7 @@ const config = {
     ],
     "languages": {
         'en_*': 'en',
+        'es_*': 'es',
         'fr_*': 'fr'
     }
 }
