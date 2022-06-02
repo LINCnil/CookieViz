@@ -25,8 +25,8 @@
       </div>
       <div style="font-size: 10px;float:left;text-align: left;padding-left: 5px;height: 120px;display: block;
       margin: 5px;">
-        <span>View cookies</span> <br>
-        <span>of your navigation</span>
+        <span>Ver cookies</span> <br>
+        <span>de su navegación</span>
       </div>
     </div>
   </nav>
@@ -34,16 +34,16 @@
   <div class="container" style="margin-top:80px;" ng-app="cookieVizApp" ng-controller="cookieVizCtrl">
     <div class="row justify-content-md-center">
       <div class="col-md-8">
-        <span style="font-weight: bold;font-size:18px;color:#282E42">Your navigation</span><br>
+        <span style="font-weight: bold;font-size:18px;color:#282E42">Su navegación</span><br>
         <div class="row justify-content-md-center">
           <div class="col-md-6">
-            <span style="font-size:14px;color:#5D5D6C">You have visited <span style="color:blue">{{nb_visited}} websites</span>.
+            <span style="font-size:14px;color:#5D5D6C">Usted ha visitado <span style="color:blue">{{nb_visited}} sitios web</span>.
             </span> <br>
-            <span style="font-size:12px;color:#C2C0C7">{{nb_visited_with_cookie}}% of them stored at least one cookie.</span>
+            <span style="font-size:12px;color:#C2C0C7">{{nb_visited_with_cookie}}% de ellos almacenaron al menos una cookie.</span>
           </div>
           <div class="col-md-6">
-            <span style="font-size:14px;color:#5D5D6C">These cookies potentially <span style="color:red">exchange</span>
-              information with <span style="color:orange">{{nb_third}} third parties</span>.</span>
+            <span style="font-size:14px;color:#5D5D6C">Esas cookies potencialmente <span style="color:red">intercambian</span>
+              información con <span style="color:orange">{{nb_third}} terceras partes</span>.</span>
           </div>
         </div>
 
@@ -54,12 +54,12 @@
             <form autocomplete="off">
               <div class="autocomplete">
                 <input id="searchVisited" style="height:20px;width:100%;" type="text"
-                  placeholder="Search for a website">
+                  placeholder="Buscar un sitio web">
               </div>
             </form>
           </div>
           <div class="col-md-2">
-            <button type='button' title="Recharger le graphe" class="fas fa-sync nav-btn"
+            <button type='button' title="Recargar el gráfico" class="fas fa-sync nav-btn"
               onclick="filter_node=null;"></button>
           </div>
         </div>
@@ -67,36 +67,36 @@
       </div>
       <div class="col-md-4" id="hist_div" style="display:block;">
         <div class="row">
-          <span style="font-weight: bold;font-size:18px;color:#282E42">Presence of third parties on websites</span>
-          <span style="font-size:14px;color:#5D5D6C">During your navigation, third parties may deposit cookies to, among other things, track navigation.
+          <span style="font-weight: bold;font-size:18px;color:#282E42">Presencia de terceras partes en los sitios web</span>
+          <span style="font-size:14px;color:#5D5D6C">Durante su navegación, terceras partes pueden instalar cookies para, entre otras cosas, el seguimiento de su navegación.
           </span>
-          <span style="font-size:14px;color:#5D5D6C;">Between <span style="color:#fb8761">{{most_third[0]}} and {{most_third[1]}} third parties</span> store cookies on 20% of visited websites.</span>
-          <span style="font-size:14px;color:#5D5D6C;">Between <span style="color:#b5367a"> {{rest_third[0]}} and {{rest_third[1]}} third parties</span> store cookies on 80% of visited websites.</span>
+          <span style="font-size:14px;color:#5D5D6C;">Entre <span style="color:#fb8761">{{most_third[0]}} y {{most_third[1]}} terceras partes</span> almacenan cookies en el 20% de los sitios web visitados.</span>
+          <span style="font-size:14px;color:#5D5D6C;">Entre <span style="color:#b5367a">{{rest_third[0]}} y {{rest_third[1]}} terceras partes</span> almacenan cookies en el 80% de los sitios web visitados.</span>
         </div>
         <div id="hist" class="row"></div>
         <div class="row justify-content-md-center" style="margin-top: 30px;">
           <div class="btn-group-sm" role="group">
-            <button type="button" class="btn btn-primary">Presence of third parties</button>
+            <button type="button" class="btn btn-primary">Presencia de terceras partes</button>
             <button type="button"
               onclick="document.getElementById('voronoi_div').style.display='block';document.getElementById('hist_div').style.display='none';"
-              class="btn btn-secondary">Use of cookies</button>
+              class="btn btn-secondary">Uso de cookies</button>
           </div>
         </div>
       </div>
       <div class="col-md-4" id="voronoi_div" style="display:none;">
         <div class="row">
-          <span style="font-weight: bold;font-size:18px;color:#282E42">Use of cookies on websites</span>
-          <span style="font-size:14px;color:#5D5D6C">The <span style="color:#fb8761;">orange area</span> shows the coverage of domains
-          dropping cookies explicitly indicated as being used for advertisement purposes in ads.txt files when visiting websites.</span>
-            <span style="font-size:14px;color:#5D5D6C">The <span style="color:#b5367a;">purple area</span> indicates the coverage of domains dropping cookies and not listed in ads.txt files when visiting websites.</span>
+          <span style="font-weight: bold;font-size:18px;color:#282E42">Uso de cookies en sitios web</span>
+          <span style="font-size:14px;color:#5D5D6C">El <span style="color:#fb8761;">area naranja</span> muestra el conjunto de dominios
+          que durante las visitas a los sitios web instalan cookies indicadas explicitamente en el fichero ads.txt como utilizadas para finalidades publicitarias.</span>
+            <span style="font-size:14px;color:#5D5D6C">El <span style="color:#b5367a;">area morada</span> muestra el conjunto de dominios que durante las visitas a los sitios web instalan cookies no listadas en el fichero ads.txt.</span>
         </div>
         <div id="treemap" class="row"></div>
         <div class="row justify-content-md-center" style="margin-top: 30px;">
           <div class="btn-group-sm" role="group">
             <button type="button"
               onclick="document.getElementById('voronoi_div').style.display='none';document.getElementById('hist_div').style.display='block';"
-              class="btn btn-secondary">Presence of third parties</button>
-            <button type="button" class="btn btn-primary">Use of cookies</button>
+              class="btn btn-secondary">Presencia de terceras partes</button>
+            <button type="button" class="btn btn-primary">Uso de cookies</button>
           </div>
         </div>
       </div>

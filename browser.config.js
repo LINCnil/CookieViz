@@ -1,5 +1,5 @@
 const config = {
-    "homepage": "www.cnil.fr",
+    "homepage": "https://www.cnil.fr",
     "name": "CookieViz",
     "showDevTools": false,
     "analyses": [
@@ -9,6 +9,8 @@ const config = {
     ],
     "languages": {
         'en_*': 'en',
-        'fr_*': 'fr'
+        'es_*': 'es',
+        'fr_*': 'fr',
+        'pt_*': 'pt'
     }
 }

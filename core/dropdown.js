@@ -32,9 +32,6 @@ function closeDropdown(elt) {
   for (const button of buttons){
     if (button.classList.contains('active')) button.classList.remove('active');
   };
-  if (elt){
-    elt.removeEventListener("click", closeDropdown);
-  }
 }
 
 function createDropdownElt(menu_id, content, event_menu, id, title, ngclick){

@@ -6,11 +6,17 @@
     <link rel="stylesheet" href="css/browser.css" />
     <script src="browser.config.js"></script>
     <script type="module">
-        config.analyses.forEach(function (analysis) {
-            import("./analyses/" + analysis + ".mjs").then(module => {
+        const loading = config.analyses.map((analysis) => {
+            return new Promise((resolve) => {
+                import("./analyses/" + analysis + ".mjs").then(module => {
                 initAnalysis(module.plugins());
-            });
-        });
+                resolve();
+             });
+            })
+        })
+        
+        Promise.all(loading).then(() => initDb());
+
     </script>
 
 </head>
@@ -110,6 +116,7 @@
                 <select id="country_select">
                     <option value="FR">FR</option>
                     <option value="EN">EN</option>
+                    <option value="ES">ES</option>
                 </select>
                 <br><br>
                 <input type="submit" value="{{'browser.visit.alexa.STORE_VISIT' | translate}}">
@@ -137,14 +144,13 @@
     <script src="core/language.js"></script>
     <script src="core/database.js"></script>
     <script src="core/plugins.js"></script>
-    <script src="core/visit.js"></script>
     <!-- TODO : <script src="core/bookmarks.js"></script>-->
 
     <!–– Browser parameters ––>
         <script src="parameters/clean_data.js"></script>
         <script src="parameters/visit_path.js"></script>
         <!-- <div id="plugins_button" style="display:inline;" class="nav-button"></div> -->
-        <iframe id='browser' src='about:blank' nwfaketop nwdisable />
+        <webview id='browser'/>
 </body>
 
 </html>

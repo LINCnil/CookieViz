@@ -21,3 +21,11 @@ async function unloadAnalysis() {
         }
     };
 }
+
+function clearPlugins() {
+    for (const loaded_plugin of loaded_plugins) {
+        if (loaded_plugin.tables) {
+            cleanDB(loaded_plugin.tables);
+        }
+    }
+}

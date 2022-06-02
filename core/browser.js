@@ -1,6 +1,7 @@
 var gui = require('nw.gui');
 var win = gui.Window.get();
 
+const new_page_event = new Event('new_page');
 
 //Viz container
 const viz_windows = [];
@@ -43,15 +44,16 @@ function initBrowser(){
         function(){           
             win.title=config.name;
             nwjsHeader.querySelector('#address').value=config.homepage;
-            nwjsBrowser.contentWindow.window.location.href=config.homepage;
+            nwjsBrowser.src=config.homepage;
+            nwjsBrowser.dispatchEvent(new_page_event);
             setTimeout(
                 function(){
                     nwjsBrowser.style.opacity=1;
                 },600
             );
             nwjsHeader.style.opacity=1;
-            nwjsBrowser.addEventListener("load", function () {
-                nwjsHeader.querySelector('#address').value=nwjsBrowser.contentWindow.window.location.href;
+            nwjsBrowser.addEventListener("contentload", function () {
+                nwjsHeader.querySelector('#address').value=nwjsBrowser.src;
             });
         },300
     );
@@ -61,12 +63,13 @@ function go(e){
     if(e.keyCode!==13){
         return;
     }
-    
+
     if(e.target.value.indexOf('//')<0){
         e.target.value='http://'+e.target.value;
     }
     
-    nwjsBrowser.contentWindow.window.location.href=e.target.value;
+    nwjsBrowser.src=e.target.value;
+    nwjsBrowser.dispatchEvent(new_page_event);
 }
 
 async function closeBrowser(){
@@ -107,11 +110,14 @@ function navigate(e){
     // Set action depending on click event
     switch(e.target.id){
         case 'back' :
+            nwjsBrowser.back( () => nwjsBrowser.dispatchEvent(new_page_event));
+            
+            break;
         case 'forward' :
-            nwjsBrowser.contentWindow.window.history[e.target.id]();
+            nwjsBrowser.forward(() => nwjsBrowser.dispatchEvent(new_page_event));
             break;
         case 'refresh' :
-            nwjsBrowser.contentWindow.window.location.reload();
+            nwjsBrowser.src=nwjsBrowser.src;
             break;
         case 'address' :
             e.target.select();
@@ -122,9 +128,6 @@ function navigate(e){
         case 'language':
         case 'settings':
             openDropdown(e.target.id);
-            nwjsBrowser.contentWindow.addEventListener("click", function(){
-                closeDropdown(nwjsBrowser.contentWindow)
-            });
             return
     }
 

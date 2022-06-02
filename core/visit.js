@@ -77,7 +77,8 @@ async function callATS(apikey, country, count) {
             error_div.innerHTML = 'failed:' + e;
             throw data.Ats.Results.Result.Alexa.Request.Errors.Error.ErrorCode
         }
-        await parseATSResponse(json.Ats.Results.Result.Alexa.TopSites.Country.Sites.Site);
+        if (json.Ats.Results.Result.Alexa.TopSites.Country.Sites)
+            await parseATSResponse(json.Ats.Results.Result.Alexa.TopSites.Country.Sites.Site);
         i += list_interval;
         error_div.innerHTML = Math.round(100 * i / count).toString() + "%";
     }

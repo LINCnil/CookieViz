@@ -1,7 +1,1 @@
-/node_modules
-/package-lock.json
-/launch.bat
-/launch.sh
-/package.sh
-.DS_Store
-.vscode/launch.json
+node_modules/

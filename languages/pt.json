@@ -1,0 +1,40 @@
+{
+	"browser": {
+		"navigation":{
+			"PREV_PAGE": "Página anterior",
+			"NEXT_PAGE": "Próxima página",
+			"REFRESH_PAGE": "Recarregar página"
+		},
+		"LANGUAGES":"Definir idioma",
+		"visualizations":{
+			"VIZ" : "Abrir visualizador"
+		},
+		"parameters":{
+			"TITLE" : "Parâmetros",
+			"CLEAN_DATA": "Limpar dados",
+			"LOAD_VISIT_TXT": "Carregar uma sequência de sites a partir de um arquivo de texto"
+		},		
+		"visit":{
+			"HEAD_VISIT":"Definir uma sequência de visitas",
+			"START_VISIT" : "Iniciar a visita",
+			"REINIT_VISIT": "Reiniciar a visita",
+			"PREVIOUS_VISIT": "Página anterior",
+			"NEXT_VISIT":"Próxima página",
+			"ADD_VISIT":"Adicionar página",
+			"REMOVE_VISIT":"Remover página",
+			"MINIMIZE_VISIT":"Minimizar",
+			"CLOSE_VISIT":"Fechar",
+			"EXPORT_VISIT" : "Exportar sequência para arquivo de texto",
+			"IMPORT_VISIT" : "Importar sequência de arquivo de texto",
+			"DOWNLOAD_VISIT" : "Download de sequência de visitas a partir da Internet",
+			"alexa":{
+				"HEAD_ALEXA":"Carregar uma sequência dos Top Sites da Alexa",
+				"VISIT_SHOW":"Exibir a barra de visita",
+				"API_KEY" : "Chave API da Amazon",
+				"LIST_SIZE" : "Número de sites a carregar",
+				"COUNTRY_CODE" : "Código do país",
+				"STORE_VISIT" : "Obter a lista da Alexa"
+			}
+		}
+	}
+}

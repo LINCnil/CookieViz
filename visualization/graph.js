@@ -1,5 +1,4 @@
 const loaded_plugins = {};
-var stop_interval = null;
 
 var g;
 var tooltip;
@@ -67,7 +66,8 @@ function load_graph(nodes, links, size, force, zoom) {
                     return "translate(" + d.x + "," + d.y + ")";
                 }).attr("cx", function(d) { return d.x; })
                 .attr("cy", function(d) { return d.y; })
-        });
+        
+            });
 
     link = g.append("g")
         .attr("stroke", "#999")

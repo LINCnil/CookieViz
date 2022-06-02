@@ -1,12 +1,4 @@
 function cleanCache() {
-    function clearPlugins() {
-        for (const loaded_plugin of loaded_plugins) {
-            if (loaded_plugin.clean) {
-                loaded_plugin.clean();
-            }
-        }
-    }
-
     function clearChrome() {
         window.nw.App.clearCache();
 
@@ -33,6 +25,8 @@ function cleanCache() {
 
     clearPlugins();
     clearChrome();
+    viz_windows.forEach(viz_win => viz_win.close());
+    viz_windows.length = 0;
 }
 
 createDropdownElt('parameter-menus', "{{'browser.parameters.CLEAN_DATA' | translate}}", cleanCache, "clean_data");

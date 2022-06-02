@@ -1,80 +1,22 @@
 const psl = require('psl');
-const url_parser = require('url');
+
+var current_page = null;
+var new_page = null;
 
 // Requests tables forms
 const requests_table_column = {
     //Standard request fields
-    request_table: ['requestId',
-        'root_initiator_baseurl',
-        'root_initiator_url',
-        'initiator_url',
-        'request_baseurl',
-        'request_url',
-        'referer',
-        'referer_baseurl',
-        'user-agent',
-        'cookie'
-    ],
-    response_table: [
-        'requestId',
-        'root_initiator_url',
-        'root_initiator_baseurl',
-        'initiator_url',
-        'request_url',
-        'request_baseurl',
-        'content-length',
-        'set-cookie'
-    ],
-    cookie_table: ['requestId',
-        'root_initiator_url',
-        'root_initiator_baseurl',
-        'initiator_url',
-        'request_url',
-        'request_baseurl',
-        'referer_baseurl',
-        'key',
-        'value'],
-    set_cookie_table: ['requestId',
-        'root_initiator_url',
-        'root_initiator_baseurl',
-        'initiator_url',
-        'request_url',
-        'request_baseurl',
-        'key',
-        'value',
-        'expires',
-        'max-age',
-        'domain',
-        'path',
-        'secure',
-        'httponly',
-        'samesite']
+    request_table: ['page', 'url', 'referer', 'cookie']
 }
-
-
-// Global stack for storing analysis in table
-const cookie_queries = [];
-const set_cookie_queries = [];
-const request_queries = [];
-const response_queries = [];
-const all_frame_id = {};
-
 
 // Crawler analyses
-function getBaseDomain(full_url){
+function getBaseDomain(full_url) {
     if (full_url == null) return null;
-    const formated_url = url_parser.parse(full_url);
-    return psl.parse(formated_url.host).domain;
-}
-
-function getHostName(full_url){
-    if (full_url == null) return null;
-    const formated_url = url_parser.parse(full_url);
-    return formated_url.hostname;
+    return psl.parse(full_url).domain;
 }
 
 function extractCookies(cookies) {
-    if(!cookies) return {};
+    if (!cookies) return {};
     return cookies.split(/; */).reduce((obj, str) => {
         if (str === "") return obj;
         const eq = str.indexOf('=');
@@ -90,34 +32,30 @@ function extractCookies(cookies) {
     }, {});
 }
 
-function getRootInitiator(initiator_url, frameId, parentFrameId) {
-    // Store parent frame id
-    all_frame_id[frameId] = { url: initiator_url, parentFrameId: parentFrameId };
+// Parsing cookie header
+function parseCookies(cookie_header_strs) {
+    const cookies = {};
 
-    // Check for parent id url
-    if (parentFrameId > 0) {
-        let parent_id = all_frame_id[parentFrameId];
-        if(!parent_id) return initiator_url;
-        let root_id = parent_id;
-        while (root_id != null && root_id.parentFrameId > 0) {
-            parent_id = root_id;
-            root_id = all_frame_id[root_id.parentFrameId];
+    if (Array.isArray(cookie_header_strs)) {
+        for (const cookie_header_str of cookie_header_strs) {
+            Object.assign(cookies, extractCookies(cookie_header_str));
         }
-        return root_id? root_id.url : parent_id.url;
+        return cookies;
     }
-
-    return initiator_url;
+    return extractCookies(cookie_header_strs);
 }
 
-function parseHeader(table, headerdetails){
+
+
+function parseHeader(table, headerdetails) {
     const results = {};
-    
+
     for (var i = 0; i < headerdetails.length; i++) {
         const header = headerdetails[i];
         const name = header.name.toLowerCase();
-        if (!table.includes(name)){
+        if (!table.includes(name)) {
             continue;
-        } 
+        }
         if (name in results) {
             if (!Array.isArray(results[name])) {
                 // Transform this place into an array
@@ -133,203 +71,157 @@ function parseHeader(table, headerdetails){
 }
 
 function processRequest(requestdetails) {
-        let initiator_url = requestdetails.initiator;
-        let request_url = requestdetails.url;
-        let requestId = requestdetails.requestId;
-        let initiator_baseurl = getBaseDomain(initiator_url);
-        let request_baseurl = getBaseDomain(request_url);
-        let referer_baseurl = null;
-        
-        // Parsing cookie header
-        function parseCookies(cookie_header_strs) {
-            const cookies = [];
-            
-            if (Array.isArray(cookie_header_strs)){
-                for (const cookie_header_str of cookie_header_strs) {
-                    cookies.push(extractCookies(cookie_header_str));
-                }
-            }else{
-                cookies.push(extractCookies(cookie_header_strs));
-            }
-    
-            for (const cookie of cookies) {
-                for (const [key, value] of Object.entries(cookie)) {
-                    cookie_queries.push({
-                        requestId: requestId,
-                        root_initiator_url: root_initiator_url,
-                        root_initiator_baseurl: root_initiator_baseurl,
-                        initiator_url: initiator_url,
-                        request_url: request_url,
-                        request_baseurl: request_baseurl,
-                        referer_baseurl: referer_baseurl,
-                        key: key,
-                        value: value
-                    });
-                }
-            }
+    const headers = parseHeader(['cookie', 'referer'], requestdetails.requestHeaders);
+
+    if (!current_page && requestdetails.initiator) {
+        if (new URL(requestdetails.initiator).hostname == new_page.hostname) {
+            current_page = new_page;
+            new_page = null;
         }
+    }
 
+    if (!current_page) return;
 
-    
-    if (initiator_baseurl == null || request_baseurl == null) return; // This is a not web requests
+    const referer = 'referer' in headers ? new URL(headers['referer']).hostname : null;
 
-
-    // Checking if request is well formed
-    let root_initiator_url = getRootInitiator(initiator_url, requestdetails.frameId, requestdetails.parentFrameId);
-    let root_initiator_baseurl = getBaseDomain(root_initiator_url);
-    const headers = parseHeader(requests_table_column['request_table'], requestdetails.requestHeaders);
-    headers['requestId'] = requestId;
-    headers['initiator_url'] = initiator_url;    
-    headers['request_url'] = request_url;
-    headers['request_baseurl'] = request_baseurl;
-    headers['root_initiator_url'] = root_initiator_url;
-    headers['root_initiator_baseurl'] = root_initiator_baseurl;
-    headers['referer_baseurl'] = getBaseDomain(headers['referer']);
-    if ('referer' in headers) referer_baseurl = getBaseDomain(headers['referer']);
-    if ('cookie' in headers) parseCookies(headers['cookie']);
-
-    request_queries.push(headers);
-
-    popQueries({request_table : request_queries,
-        cookie_table : cookie_queries
-    });
-}
-
-function processResponse(responsedetails) {
-    let initiator_url = responsedetails.initiator;
-    let request_url = responsedetails.url;
-    let requestId = responsedetails.requestId;
-    let request_baseurl = getBaseDomain(request_url);
-
-        // Parsing set cookie header
-        function parseSetCookies(set_cookie_header_strs) {
-            const set_cookies = [];
-
-            if (Array.isArray(set_cookie_header_strs)){
-                for (const set_cookie_header_str of set_cookie_header_strs) {
-                    set_cookies.push(extractCookies(set_cookie_header_str));
-                }
-            }else{
-                set_cookies.push(extractCookies(set_cookie_header_strs));
-            }
-            
-            for (const set_cookie of set_cookies) {
-                //Specific set cookies attributes
-                const set_cookie_query = {
-                    requestId: requestId,
-                    root_initiator_url: root_initiator_url,
-                    root_initiator_baseurl: root_initiator_baseurl,
-                    initiator_url: initiator_url,
-                    request_url: request_url,
-                    request_baseurl: request_baseurl
-                };
-                const set_cookies_attributes = ['expires', 'max-age', 'domain', 'path', 'secure', 'httponly', 'samesite'];
-    
-                for (const [key, value] of Object.entries(set_cookie)) {
-                    const variable = key.toLowerCase();
-                    if (set_cookies_attributes.includes(variable)) {
-                        set_cookie_query[variable] = value;
-                    } else {
-                        set_cookie_query['key'] = variable;
-                        set_cookie_query['value'] = value;
-                    }
-                }
-                set_cookie_queries.push(set_cookie_query);
-            }
-        }
-
-        if (initiator_url == null || request_baseurl == null) return; // This is a none web requests
-
-
-    // Checking if request is well formed
-    let root_initiator_url = getRootInitiator(initiator_url, responsedetails.frameId, responsedetails.parentFrameId);
-    let root_initiator_baseurl = getBaseDomain(root_initiator_url);
-    const headers = parseHeader(requests_table_column['response_table'], responsedetails.responseHeaders);
-    headers['requestId'] = requestId;
-    headers['initiator_url'] = initiator_url;
-    headers['request_url'] = request_url;
-    headers['request_baseurl'] = request_baseurl;
-    headers['root_initiator_url'] = root_initiator_url;
-    headers['root_initiator_baseurl'] = root_initiator_baseurl;
-    if ('set-cookie' in headers) parseSetCookies(headers['set-cookie']);
-
-    response_queries.push(headers);
-
-    popQueries({
-        response_table: response_queries,
-        set_cookie_table: set_cookie_queries
-    });
+    WriteToDb("request_table", { page: current_page.hostname, url: new URL(requestdetails.url).hostname, referer: referer, cookie: headers['cookie'], timestamp: requestdetails.timeStamp });
 }
 
 function initRequestsCrawler() {
-    createTables(requests_table_column);
-
     // Read cookie
-    chrome.webRequest.onBeforeSendHeaders.addListener(processRequest, {
+    nwjsBrowser.request.onBeforeSendHeaders.addListener(processRequest, {
         urls: ["*://*/*"]
     }, ['requestHeaders', 'extraHeaders']
     );
 
-    // Store cookie
-    chrome.webRequest.onHeadersReceived.addListener(processResponse, {
-        urls: ["*://*/*"]
-    }, ['responseHeaders', 'extraHeaders']
-    );
+    nwjsBrowser.addEventListener("new_page", function () {
+        current_page = null;
+        new_page = new URL(nwjsBrowser.src);
+    });
 }
 
 function deleteRequestsCrawler() {
-    chrome.webRequest.onBeforeSendHeaders.removeListener(processRequest);
-    chrome.webRequest.onHeadersReceived.removeListener(processRequest);
+    nwjsBrowser.request.onBeforeSendHeaders.removeListener(processRequest);
 }
 
-function cleanRequestsTable() {
-    deleteTables(requests_table_column);
+
+function getNodes(table, index) {
+    if (!db) return;
+
+    return new Promise((resolve, reject) => {
+
+        let txn = db.transaction([table], 'readonly');
+
+        function get_requested() {
+            return new Promise((resolve, reject) => {
+                const objectStore = txn.objectStore(table);
+
+                if (index){
+                    objectStore = objectStore.index(index);
+                }
+
+                let visited = new Set();
+                let requested = new Set();
+
+                objectStore.openCursor().onsuccess = function (event) {
+                    const cursor = event.target.result;
+                    if (cursor) {
+                        const page = getBaseDomain(cursor.value.page);
+                        const referer = getBaseDomain(cursor.value.referer);
+                        const url = getBaseDomain(cursor.value.url);
+
+                        visited.add(page);
+                        requested.add(referer);
+                        requested.add(url);
+                        cursor.continue();
+                    } else {
+                        resolve([Array.from(visited), Array.from(requested)]);
+                    }
+                }
+            });
+        }
+
+        get_requested().then((values) => {
+            const visited = values[0];
+            resolve([...new Set(values.flat())]
+                .filter(x => x)
+                .map(x => ({ 'id': x, 'visited': visited.includes(x) ? 1 : 0 })));
+        });
+    });
 }
 
-function linkByInitiatorAndRequest(results){
-    const filter_result = {};
-    for (const result of results) {
-        const source = getHostName(result["root_initiator_url"]);
-        const target = result["request_baseurl"];
+function getAllNodes(table, index) {
+    if (!db) return;
 
-        if (!(source in filter_result)) filter_result[source] = {};
-        if (!(target in filter_result[source])) filter_result[source][target] = {};
+    let txn = db.transaction([table], 'readonly');
+    let objectStore = txn.objectStore("request_table");
 
-        const cookies = extractCookies(result["cookie"]);
+    const promises = index.map (x =>
+        new Promise((resolve, reject) => {
+            let url = new Set();
+            const index = objectStore.index(x);
+            index.openCursor().onsuccess = function(event) {
+                const cursor = event.target.result;
+                if(cursor) {
+                    url.add(getBaseDomain(cursor.key));
+                    cursor.continue();
+                }else{
+                    resolve([...url]);
+                }
 
-        for (var key in cookies) {
-            if (!(key in filter_result[source][target])){
-                filter_result[source][target][key] = cookies[key];
+            }
+        })
+    );
+
+    return new Promise((resolve, reject) => {
+        Promise.all(promises).then((values)=>{
+            const visited = values[0];
+            resolve([...new Set(values.flat())]
+                .filter(x => x)
+                .map(x => ({ 'id': x, 'visited': visited.includes(x) ? 1 : 0 })));
+        });
+    });
+}
+
+function getLinks(table, index) {
+    if (!db) return;
+
+    let txn = db.transaction([table], 'readonly');
+
+    return new Promise((resolve, reject) => {
+        let links = [];
+        let objectStore = txn.objectStore(table);
+
+        if (index){
+            objectStore = objectStore.index(index);
+        }
+
+        objectStore.openCursor().onsuccess = function (event) {
+            const cursor = event.target.result;
+            if (cursor) {
+                const source = getBaseDomain(cursor.value.referer);
+                const target = getBaseDomain(cursor.value.url);
+                const page = getBaseDomain(cursor.value.page);
+                if (source && target && source != target) {
+                    const link = links.find(x => x.source == source && x.target == target);
+                    const cookies = parseCookies(cursor.value.cookie);
+                    if (link){
+                        Object.assign(link.cookie,cookies);
+                        if(!link.page.includes(page)){
+                            link.page.push(page);
+                        }
+                        
+                    }else{
+                        links.push({ source: source, target: target, cookie: cookies, page : [page]});
+                    }
+                        
+                }
+                cursor.continue();
+            } else {
+                resolve(links);
             }
         }
-    }
-
-    return filter_result;
-}
-
-function nodeByRequest(results){
-    const setVisited = new Set();
-    const setThird = new Set();
-    for (const result of results) {
-        setVisited.add(getHostName(result["root_initiator_url"]));
-        setThird.add(result["request_baseurl"]);
-    }
-
-    return []
-    .concat(Array.from(setVisited).map(x => ({'id':x, 'visited':1})))
-    .concat(Array.from(setThird).map(x => ({'id':x, 'visited':0})));
-}
-
-
-function groupByRequestAndKey(results){
-    const filter_result = {};
-    for (const result of results) {
-        const request_baseurl = result["request_baseurl"];
-        if (!(request_baseurl in filter_result))  filter_result[request_baseurl] = [];
-        filter_result[request_baseurl].push(result["key"]);
-    }
-
-    return filter_result;
+    });
 }
 
 
@@ -340,12 +232,12 @@ const requests = {
     author: "linc",
     init: initRequestsCrawler,
     delete: deleteRequestsCrawler,
-    clean: cleanRequestsTable,
+    tables: requests_table_column,
     data: {
-        "link_requests":  getFromQuery.bind(null, 'request_table', ['request_baseurl', 'root_initiator_url', 'cookie'], "request_baseurl != root_initiator_baseurl", ['root_initiator_url', 'request_baseurl', 'cookie'], null, linkByInitiatorAndRequest),
-        "nodes_requests":  getFromQuery.bind(null, 'request_table', ['request_baseurl', 'root_initiator_baseurl', 'root_initiator_url'], "request_baseurl != root_initiator_baseurl  and `root_initiator_baseurl` IS NOT NULL", ['root_initiator_url', 'request_baseurl'], null, nodeByRequest),
-        "nodes_requests_with_cookies":  getFromQuery.bind(null, 'request_table', ['request_baseurl', 'root_initiator_url'], "request_baseurl != root_initiator_baseurl  and `cookie` IS NOT NULL", ['root_initiator_url', 'request_baseurl'], null, nodeByRequest),
-        "link_requests_with_cookies":  getFromQuery.bind(null, 'request_table', ['request_baseurl', 'root_initiator_url', 'cookie'], "request_baseurl != root_initiator_baseurl and `cookie` IS NOT NULL and `root_initiator_baseurl` IS NOT NULL", ['root_initiator_url', 'request_baseurl', 'cookie'], null, linkByInitiatorAndRequest),
+        "link_requests": getLinks.bind(null, "request_table"),
+        "nodes_requests": getAllNodes.bind(null, "request_table", ["page", "referer", "url"]),
+        "nodes_requests_with_cookies": getNodes.bind(null, "request_table", "cookie"),
+        "link_requests_with_cookies": getLinks.bind(null, "request_table", "cookie"),
     }
 }
 
