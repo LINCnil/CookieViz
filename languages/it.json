@@ -1,0 +1,40 @@
+{
+	"browser": {
+		"navigation":{
+			"PREV_PAGE": "Previous page",
+			"NEXT_PAGE": "Next page",
+			"REFRESH_PAGE": "Refresh page"
+		},
+		"LANGUAGES":"Imposta lingua",
+		"visualizations":{
+			"VIZ" : "Opri viz"
+		},
+		"parameters":{
+			"TITLE" : "Parametri",
+			"CLEAN_DATA": "Pulisci dati",
+			"LOAD_VISIT_TXT": "Carica un percorso della visita da un file di testo"
+		},		
+		"visit":{
+			"HEAD_VISIT":"Definire un percorso di visita",
+			"START_VISIT" : "Inizio visita",
+			"REINIT_VISIT": "Reinizializza la visita",
+			"PREVIOUS_VISIT": "Pagina precedente",
+			"NEXT_VISIT":"Pagina sucessiva",
+			"ADD_VISIT":"Aggingi pagina",
+			"REMOVE_VISIT":"Rimuovi pagina",
+			"MINIMIZE_VISIT":"Minimizza/massimizza visita",
+			"CLOSE_VISIT":"Chiudi visita",
+			"EXPORT_VISIT" : "Esporta la visita in un file di testo",
+			"IMPORT_VISIT" : "Importa la visita in un file di testo",
+			"DOWNLOAD_VISIT" : "Scarica l'elenco delle visite da Internet",
+			"alexa":{
+				"HEAD_ALEXA":"Carica una visita dal sito principale di Alexa",
+				"VISIT_SHOW":"Mostra la barra delle visite",
+				"API_KEY" : "Chiave API",
+				"LIST_SIZE" : "Numero di sito Web da recuperare",
+				"COUNTRY_CODE" : "Codice Paese",
+				"STORE_VISIT" : "Ottieni l'elenco di Alexa"
+			}
+		}
+	}
+}
